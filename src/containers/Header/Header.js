@@ -8,8 +8,6 @@ import { adminMenu } from './menuApp';
 import './Header.scss';
 import { LANGUAGES } from '../../utils';
 
-import { changeLanguageApp } from '../../store/actions'
-
 class Header extends Component {
     handleChangeLanguage = (language) => {
         this.props.changeLanguageAppRedux(language);
@@ -18,9 +16,8 @@ class Header extends Component {
 
     render() {
         console.log('check props: ', this.props);
-        let language = this.props.language;
 
-        const { processLogout } = this.props;
+        const { processLogout, language, userInfo } = this.props;
 
         return (
             <div className="header-container">
@@ -30,6 +27,9 @@ class Header extends Component {
                 </div>
 
                 <div className='languages'>
+                    <span className='welcome'><FormattedMessage id="homeheader.welcome" />
+                        {userInfo && userInfo.firstName ? userInfo.firstName : ''}
+                    </span>
                     <span
                         className={language === LANGUAGES.VI ? 'language-vi active' : 'language-vi'}
                         onClick={() => this.handleChangeLanguage(LANGUAGES.VI)}>
@@ -54,6 +54,7 @@ class Header extends Component {
 const mapStateToProps = state => {
     return {
         isLoggedIn: state.user.isLoggedIn,
+        userInfo: state.user.userInfo,
         language: state.app.language,
         //inject
     };
@@ -62,7 +63,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         processLogout: () => dispatch(actions.processLogout()),
-        changeLanguageAppRedux: (language) => dispatch(changeLanguageApp(language)),
+        changeLanguageAppRedux: (language) => dispatch(actions.changeLanguageApp(language)),
     };
 };
 
