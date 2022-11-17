@@ -30,6 +30,7 @@
         "role": "Vai trò",
         "image": "Ảnh đại diện",
         "save": "Tạo mới",
-        "edit": "Lưu thay đổi"
+        "edit": "Lưu thay đổi",
+        "cancel": "Hủy"
     }
 }

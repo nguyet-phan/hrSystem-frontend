@@ -4,7 +4,8 @@
     z-index: 99;
     display: flex;
     justify-content: space-between;
-    background-color: $colormain;
+    // background-color: $colormain;
+  background: linear-gradient(115deg, #5856e4 10%, #9f01ea 90%);
     color: $common-text-color;
     height: 40px;
     position: relative;
