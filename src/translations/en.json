@@ -18,7 +18,9 @@
         }
     },
     "manage-user": {
+        "title": "Manage Users",
         "add": "Add a new user",
+        "userId": "ID",
         "email": "Email",
         "password": "Password",
         "first-name": "First name",
@@ -31,6 +33,8 @@
         "image": "Avatar",
         "save": "Save user",
         "edit": "Edit user",
-        "cancel": "Cancel"
+        "cancel": "Cancel",
+        "actions": "Actions",
+        "upload": "Upload"
     }
 }

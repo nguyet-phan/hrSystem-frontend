@@ -18,7 +18,9 @@
         }
     },
     "manage-user": {
+        "title": "Quản lý tài khoản",
         "add": "Thêm mới người dùng",
+        "userId": "Mã NV",
         "email": "Email",
         "password": "Mật khẩu",
         "first-name": "Tên",
@@ -29,8 +31,10 @@
         "position": "Chức danh",
         "role": "Vai trò",
         "image": "Ảnh đại diện",
-        "save": "Tạo mới",
-        "edit": "Lưu thay đổi",
-        "cancel": "Hủy"
+        "save": "Lưu",
+        "edit": "Lưu",
+        "cancel": "Hủy",
+        "actions": "Hành động",
+        "upload": "Tải ảnh lên"
     }
 }

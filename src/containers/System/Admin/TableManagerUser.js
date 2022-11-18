@@ -3,6 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './TableManagerUser.scss';
 import * as actions from "../../../store/actions";
+import { LANGUAGES } from '../../../utils';
 
 class TableManagerUser extends Component {
 
@@ -37,26 +38,33 @@ class TableManagerUser extends Component {
         // console.log('check all users redux: ', this.props.listUsers);
         // console.log('check all state: ', this.state.usersRedux);
         let arrUsers = this.state.usersRedux;
+        let language = this.props.language;
 
         return (
             <table id='TableManagerUser'>
                 <tbody>
                     <tr>
-                        <th>Email</th>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
-                        <th>Address</th>
-                        <th>Actions</th>
+                        <th><FormattedMessage id='manage-user.userId' /></th>
+                        <th><FormattedMessage id='manage-user.email' /></th>
+                        <th><FormattedMessage id='manage-user.last-name' /></th>
+                        <th><FormattedMessage id='manage-user.first-name' /></th>
+                        {/* <th><FormattedMessage id='manage-user.phone-number' /></th> */}
+                        <th><FormattedMessage id='manage-user.position' /></th>
+                        <th><FormattedMessage id='manage-user.role' /></th>
+                        <th><FormattedMessage id='manage-user.actions' /></th>
                     </tr>
 
                     {arrUsers && arrUsers.length > 0 &&
                         arrUsers.map((item, index) => {
                             return (
                                 <tr key={index}>
+                                    <td>{item.id}</td>
                                     <td>{item.email}</td>
-                                    <td>{item.firstName}</td>
                                     <td>{item.lastName}</td>
-                                    <td>{item.address}</td>
+                                    <td>{item.firstName}</td>
+                                    {/* <td>{item.phoneNumber}</td> */}
+                                    <td>{language === LANGUAGES.VI ? item.positionData.valueVi : item.positionData.valueEn}</td>
+                                    <td>{language === LANGUAGES.VI ? item.roleData.valueVi : item.roleData.valueEn}</td>
                                     <td>
                                         <button className='btn-edit'
                                             onClick={() => this.handleEditUser(item)}>
@@ -81,7 +89,8 @@ class TableManagerUser extends Component {
 
 const mapStateToProps = state => {
     return {
-        listUsers: state.admin.users
+        listUsers: state.admin.users,
+        language: state.app.language,
     };
 };
 

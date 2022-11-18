@@ -247,10 +247,11 @@ class UserRedux extends Component {
         return (
             <div className='user-redux-container'>
                 <div className='title'>
-                    Manage User Using Redux
+                    <FormattedMessage id='manage-user.title' />
                 </div>
 
                 <div className='user-redux-body' >
+                    {/* <div className='container-fluid'> */}
                     <div className='container'>
                         {isDisplayForm ?
                             <div className='row'>
@@ -360,7 +361,8 @@ class UserRedux extends Component {
 
                                         />
                                         <label className='label-upload' htmlFor='previewImg'>
-                                            Tải ảnh lên <i className='fas fa-upload'></i>
+                                            <FormattedMessage id='manage-user.upload' />
+                                            <i className='fas fa-upload mx-1'></i>
                                         </label>
                                         <div className='preview-image'
                                             style={{ backgroundImage: `url(${this.state.previewImgURL})` }}
@@ -368,15 +370,15 @@ class UserRedux extends Component {
                                         ></div>
                                     </div>
                                 </div>
-                                <div className='col-12 my-3 '>
+                                <div className='col-12 my-3 text-center'>
                                     <button
-                                        className='btn btn-danger px-3 text-center'
+                                        className='btn btn-danger mx-3 '
                                         onClick={() => this.onCloseForm()}
                                     >
                                         {/* <i className='fas fa-times-circle'></i><> </> */}
                                         <FormattedMessage id='manage-user.cancel' />
                                     </button>
-                                    <button className={this.state.action === CRUD_ACTIONS.EDIT ? 'btn btn-warning' : 'btn btn-primary'}
+                                    <button className={this.state.action === CRUD_ACTIONS.EDIT ? 'btn btn-warning mx-3' : 'btn btn-primary mx-3'}
                                         onClick={() => this.handleSaveUser()}
                                     >
                                         {this.state.action === CRUD_ACTIONS.EDIT ?
@@ -388,7 +390,7 @@ class UserRedux extends Component {
                                 </div>
                             </div>
                             :
-                            <div className='col-12 mb-3'>
+                            <div className='col-12 mb-3 text-right'>
                                 <button
                                     className='btn btn-primary px-3'
                                     onClick={() => this.onOpenForm()}
@@ -404,7 +406,7 @@ class UserRedux extends Component {
                             <TableManagerUser
                                 handleEditUserFromParentKey={this.handleEditUserFromParent}
                                 action={this.state.action}
-                                onToggleForm={this.onToggleForm}
+
                             />
                         </div>
                     </div>

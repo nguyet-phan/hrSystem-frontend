@@ -129,8 +129,10 @@ export const fetchAllUserStart = () => {
     return async (dispatch, getState) => {
         try {
             let res = await getAllUsers("ALL");
+            // console.log('check get All Users: ', res);
             if (res && res.errCode === 0) {
-                dispatch(fetchAllUsersSuccess(res.users.reverse()));
+                // dispatch(fetchAllUsersSuccess(res.users.reverse()));//dao nguoc thu tu
+                dispatch(fetchAllUsersSuccess(res.users));
             } else {
                 toast.error("fetchAllUsers Failed!");
                 dispatch(fetchAllUsersFailed());
