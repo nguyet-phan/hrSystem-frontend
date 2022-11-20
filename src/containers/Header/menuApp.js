@@ -7,16 +7,10 @@ export const adminMenu = [
             },
             {
                 name: 'menu.admin.crud-redux', link: '/system/user-redux'
-            },
-            {
-                name: 'menu.admin.manage-PM', link: '/system/user-PM'
                 // subMenus: [
                 //     { name: 'menu.system.system-administrator.user-manage', link: '/system/user-manage' },
                 //     { name: 'menu.system.system-administrator.user-redux', link: '/system/user-redux' },
                 // ]
-            },
-            {
-                name: 'menu.admin.manage-admin', link: '/system/user-admin'
             },
 
         ]
@@ -34,6 +28,9 @@ export const adminMenu = [
         menus: [
             {
                 name: 'menu.admin.manage-event', link: '/system/manage-event'
+            },
+            {
+                name: 'menu.admin.calender', link: '/system/calender'
             },
         ]
     },

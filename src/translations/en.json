@@ -5,13 +5,12 @@
     "menu": {
         "admin": {
             "manage-user": "Users System",
-            "manage-PM": "Manage PM",
-            "manage-admin": "Manage Admin",
             "crud": "CRUD user",
             "crud-redux": "CRUD redux",
             "department": "Departments",
             "manage-department": "Manage Departments",
             "event": "Events",
+            "calender": "Lịch",
             "manage-event": "Manage Events",
             "salary": "Salary",
             "manage-salary": "Manage Salary"

@@ -5,14 +5,13 @@
     "menu": {
         "admin": {
             "manage-user": "Người dùng",
-            "manage-PM": "Quản lý PM",
-            "manage-admin": "Quản lý admin",
             "crud": "CRUD user",
             "crud-redux": "CRUD redux",
             "department": "Phòng ban",
             "manage-department": "Quản lý phòng ban",
             "event": "Sự kiện",
             "manage-event": "Quản lý sự kiện",
+            "calender": "Lịch",
             "salary": "Lương",
             "manage-salary": "Quản lý lương"
         }

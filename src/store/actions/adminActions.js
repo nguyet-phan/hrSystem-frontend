@@ -1,8 +1,10 @@
 import actionTypes from './actionTypes';
 import {
     getAllCodeService, createNewUserService, getAllUsers,
-    deleteUserService, editUserService
+    deleteUserService, editUserService, getAllManagersService,
+    saveBasicSalaryService
 } from '../../services/userService';
+
 import { toast } from 'react-toastify';
 // redux: start-doing-end
 // export const fetchGenderStart = () => ({
@@ -213,3 +215,59 @@ export const editUserSuccess = () => ({
 export const editUserFailed = () => ({
     type: actionTypes.EDIT_USER_FAILDED
 })
+
+/**------------------All Managers------------ */
+
+export const fetchAllManagersStart = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getAllManagersService();
+            if (res && res.errCode === 0) {
+
+                dispatch({
+                    type: actionTypes.FETCH_ALL_MANAGERS_SUCCESS,
+                    dataManagers: res.data
+                });
+            } else {
+                toast.error("fetchAllManagers Failed!");
+                dispatch({
+                    type: actionTypes.FETCH_ALL_MANAGERS_FAILDED
+                });
+            }
+        } catch (e) {
+            toast.error("fetchAllManagers Failed!");
+            dispatch({
+                type: actionTypes.FETCH_ALL_MANAGERS_FAILDED
+            });
+            console.log('fetchAllManagersStart error: ', e);
+        }
+    }
+}
+
+/**------------------Save basic salaries------------ */
+
+export const saveBasicSalaries = (data) => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await saveBasicSalaryService(data);
+            if (res && res.errCode === 0) {
+                toast.success("Save basic salaries succeed!");
+                dispatch({
+                    type: actionTypes.SAVE_BASIC_SALARY_SUCCESS,
+                });
+            } else {
+                console.log('SAVE_BASIC_SALARY_FAILDED error: ', res);
+                toast.error("SAVE_BASIC_SALARY_FAILDED Failed!");
+                dispatch({
+                    type: actionTypes.SAVE_BASIC_SALARY_FAILDED
+                });
+            }
+        } catch (e) {
+            toast.error("SAVE_BASIC_SALARY_FAILDED Failed!");
+            dispatch({
+                type: actionTypes.SAVE_BASIC_SALARY_FAILDED
+            });
+            console.log('SAVE_BASIC_SALARY_FAILDED error: ', e);
+        }
+    }
+}

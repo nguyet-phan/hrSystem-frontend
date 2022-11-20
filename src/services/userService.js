@@ -30,11 +30,17 @@ const getAllCodeService = (inputType) => {
     return axios.get(`/api/allcode?type=${inputType}`);
 }
 
+const getAllManagersService = () => {
+    return axios.get('/api/get-all-managers');
+}
+
+const saveBasicSalaryService = (data) => {
+    return axios.post('/api/save-basic-salary', data);
+}
+
 export {
-    handleLoginApi,
-    getAllUsers,
-    createNewUserService,
-    deleteUserService,
-    editUserService,
-    getAllCodeService
+    handleLoginApi, getAllUsers,
+    createNewUserService, deleteUserService, editUserService,
+    getAllCodeService, getAllManagersService,
+    saveBasicSalaryService
 }

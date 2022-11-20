@@ -1,0 +1,40 @@
+.form-manage-department{
+    display: flex;
+    .department-name{
+        width: 50%;
+        margin-right: 10px;
+    }
+    .description{
+        width: 50%;
+        margin-left: 10px;
+    }
+}
+
+.list-departments {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: white;
+}
+
+.list-departments td,
+.list-departments th {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.list-departments tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.list-departments tr:hover {
+    background-color: #ddd;
+}
+
+.list-departments th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #3073ad;
+    color: white;
+}
