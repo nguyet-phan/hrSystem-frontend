@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './ManageSalary.scss';
-import * as actions from "../../../store/actions";
-import { LANGUAGES } from '../../../utils';
+import * as actions from "../../../../store/actions";
+import { LANGUAGES } from '../../../../utils';
 
 import Select from 'react-select';
 
@@ -13,7 +13,7 @@ class ManageSalary extends Component {
         super(props);
         this.state = {
             selectedStaff: '',
-            basicSalary: ''
+            basicSalary: '',
         }
     }
 

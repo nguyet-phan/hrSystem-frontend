@@ -1,0 +1,31 @@
+.manage-event-container{
+    
+
+    .form-manage-event {
+        position: relative;
+        display: flex;
+        margin: 15px 0;
+        
+        .title-event{
+            width: 30%;
+            margin-right: 10px;
+        }
+        .start-date{
+            width: 30%;
+            margin-right: 10px;
+        }
+        .end-date{
+            width: 30%;
+        }
+    }
+    
+    .btn {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        // width: 8%;
+    }
+    
+    
+}
+

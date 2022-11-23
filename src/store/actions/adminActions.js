@@ -4,12 +4,13 @@ import {
     deleteUserService, editUserService, getAllManagersService,
     saveBasicSalaryService
 } from '../../services/userService';
+import {
+    getAllEvents, createNewEventService,
+    deleteEventService, editEventService,
+} from '../../services/eventService';
 
 import { toast } from 'react-toastify';
 // redux: start-doing-end
-// export const fetchGenderStart = () => ({
-//     type: actionTypes.FETCH_GENDER_START
-// })
 
 /**------------------Gender------------ */
 
@@ -271,3 +272,122 @@ export const saveBasicSalaries = (data) => {
         }
     }
 }
+
+/**------------------Create a new event------------ */
+
+export const createNewEvent = (data) => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await createNewEventService(data);
+            if (res && res.errCode === 0) {
+                toast.success("createNewEvent succeed!");
+                dispatch({
+                    type: actionTypes.CREATE_EVENT_SUCCESS,
+                });
+                dispatch(fetchAllEventStart());
+            } else {
+                console.log('CREATE_EVENT_FAILDED error: ', res);
+                toast.error("CREATE_EVENT_FAILDED Failed!");
+                dispatch({
+                    type: actionTypes.CREATE_EVENT_FAILDED
+                });
+            }
+        } catch (e) {
+            toast.error("CREATE_EVENT_FAILDED Failed!");
+            dispatch({
+                type: actionTypes.CREATE_EVENT_FAILDED
+            });
+            console.log('CREATE_EVENT_FAILDED error: ', e);
+        }
+    }
+}
+
+/**------------------Create a new event------------ */
+
+export const fetchAllEventStart = () => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await getAllEvents("ALL");
+            console.log('check all events: ', res);
+            if (res && res.errCode === 0) {
+                dispatch(fetchAllEventsSuccess(res.events));
+            } else {
+                toast.error("fetch All Events Failed!");
+                dispatch(fetchAllEventsFailed());
+            }
+        } catch (e) {
+            toast.error("fetchAllEvents Failed!");
+            dispatch(fetchAllEventsFailed());
+            console.log('fetchAllEventsStart error: ', e);
+        }
+    }
+}
+
+export const fetchAllEventsSuccess = (data) => ({
+    type: actionTypes.FETCH_ALL_EVENTS_SUCCESS,
+    events: data
+})
+
+export const fetchAllEventsFailed = () => ({
+    type: actionTypes.FETCH_ALL_EVENTS_FAILDED
+})
+
+/**------------------Delete the event------------ */
+
+export const deleteEvent = (eventId) => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await deleteEventService(eventId);
+            if (res && res.errCode === 0) {
+                toast.success("Delete the event succeed!");
+                dispatch(deleteEventSuccess());
+                dispatch(fetchAllEventStart());
+            } else {
+                toast.error("Delete the event failded!");
+                dispatch(deleteEventFailed());
+            }
+        } catch (e) {
+            toast.error("Delete the event failded!");
+            dispatch(deleteEventFailed());
+            console.log('deleteEventFailed error: ', e);
+        }
+    }
+}
+
+export const deleteEventSuccess = () => ({
+    type: actionTypes.DELETE_EVENT_SUCCESS,
+})
+
+export const deleteEventFailed = () => ({
+    type: actionTypes.DELETE_EVENT_FAILDED
+})
+
+/**------------------Edit the event------------ */
+
+export const editEvent = (data) => {
+    return async (dispatch, getState) => {
+        try {
+            let res = await editEventService(data);
+            if (res && res.errCode === 0) {
+                toast.success("Edit the event succeed!");
+                dispatch(editEventSuccess());
+                dispatch(fetchAllEventStart());
+            } else {
+                toast.error("Edit the event failded!");
+                dispatch(editEventFailed());
+            }
+        } catch (e) {
+            toast.error("Edit the event failded!");
+            dispatch(editEventFailed());
+            console.log('editEventFailed error: ', e);
+        }
+    }
+}
+
+export const editEventSuccess = () => ({
+    type: actionTypes.EDIT_EVENT_SUCCESS,
+})
+
+export const editEventFailed = () => ({
+    type: actionTypes.EDIT_EVENT_FAILDED
+})

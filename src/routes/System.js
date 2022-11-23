@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Redirect, Route, Switch } from 'react-router-dom';
-import UserManage from '../containers/System/UserManage';
-import UserRedux from '../containers/System/Admin/UserRedux';
 import Header from '../containers/Header/Header';
-import ManageSalary from '../containers/System/Admin/ManageSalary';
-import ManageEvent from '../containers/System/Admin/ManageEvent';
-import ManageDepartment from '../containers/System/Admin/ManageDepartment';
-import Calender from '../containers/System/Admin/Calender';
+import UserManage from '../containers/System/UserManage';
+import UserRedux from '../containers/System/Admin/User/UserRedux';
+import ManageDepartment from '../containers/System/Admin/Department/ManageDepartment';
+import ManageSalary from '../containers/System/Admin/Salary/ManageSalary';
+import ManageEvent from '../containers/System/Admin/Event/ManageEvent';
+import Calender from '../containers/System/Admin/Event/Calender';
 
 class System extends Component {
     render() {

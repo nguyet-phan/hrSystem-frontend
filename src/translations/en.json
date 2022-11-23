@@ -10,10 +10,16 @@
             "department": "Departments",
             "manage-department": "Manage Departments",
             "event": "Events",
-            "calender": "Lịch",
+            "calender": "Calender",
             "manage-event": "Manage Events",
             "salary": "Salary",
             "manage-salary": "Manage Salary"
+        },
+        "staff": {
+            "event": "Events",
+            "calender": "Calender",
+            "salary": "Salary",
+            "manage-salary": "Payroll"
         }
     },
     "manage-user": {
@@ -35,5 +41,14 @@
         "cancel": "Cancel",
         "actions": "Actions",
         "upload": "Upload"
+    },
+    "manage-event": {
+        "title": "Manage Events",
+        "event-name": "Event's name",
+        "start-day": "Start Day",
+        "end-day": "End Day",
+        "save": "Save",
+        "edit": "Edit",
+        "actions": "Actions"
     }
 }

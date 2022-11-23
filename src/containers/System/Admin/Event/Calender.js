@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './ManageEvent.scss';
-import * as actions from "../../../store/actions";
-import { LANGUAGES } from '../../../utils';
+import * as actions from "../../../../store/actions";
+import { LANGUAGES } from '../../../../utils';
 
 import { Calendar, dateFnsLocalizer } from "react-big-calendar";
 import format from "date-fns/format";
@@ -79,7 +79,7 @@ class ManageEvent extends Component {
 
                 <Calendar localizer={localizer} events={events}
                     startAccessor="start" endAccessor="end"
-                    style={{ height: 500, 'margin-top': "30px" }}
+                    style={{ height: 500, marginTop: "40px" }}
                 />
 
             </div>

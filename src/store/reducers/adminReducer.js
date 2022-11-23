@@ -6,7 +6,8 @@ const initialState = {
     roles: [],
     positions: [],
     users: [],
-    allManagers: []
+    allManagers: [],
+    events: []
 }
 
 const adminReducer = (state = initialState, action) => {
@@ -69,13 +70,25 @@ const adminReducer = (state = initialState, action) => {
             }
 
         case actionTypes.FETCH_ALL_MANAGERS_SUCCESS:
-            state.positions = action.dataManagers;
+            state.managers = action.dataManagers;
             return {
                 ...state
             }
 
         case actionTypes.FETCH_ALL_MANAGERS_FAILDED:
-            state.positions = [];
+            state.managers = [];
+            return {
+                ...state
+            }
+
+        case actionTypes.FETCH_ALL_EVENTS_SUCCESS:
+            state.events = action.events;
+            return {
+                ...state
+            }
+
+        case actionTypes.FETCH_ALL_EVENTS_FAILDED:
+            state.events = [];
             return {
                 ...state
             }

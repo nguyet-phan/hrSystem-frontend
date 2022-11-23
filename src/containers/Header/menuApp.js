@@ -43,3 +43,23 @@ export const adminMenu = [
         ]
     },
 ];
+
+export const staffMenu = [
+
+    { //quản lý sự kiện
+        name: 'menu.staff.event',
+        menus: [
+            {
+                name: 'menu.staff.calender', link: '/system/calender'
+            },
+        ]
+    },
+    { //quản lý lương
+        name: 'menu.staff.salary',
+        menus: [
+            {
+                name: 'menu.staff.manage-salary', link: '/system/manage-salary'
+            },
+        ]
+    },
+];

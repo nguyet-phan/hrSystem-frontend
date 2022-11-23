@@ -18,10 +18,21 @@ export const CRUD_ACTIONS = {
 };
 
 export const dateFormat = {
-    SEND_TO_SERVER: 'DD/MM/YYYY'
+    // SEND_TO_SERVER: 'DD/MM/YYYY'
+    SEND_TO_SERVER: 'YYYY/MM/DD'
+};
+
+export const monthFormat = {
+    SEND_TO_SERVER: 'MM/YYYY'
 };
 
 export const YesNoObj = {
     YES: 'Y',
     NO: 'N'
-}
+};
+
+export const USER_ROLE = {
+    ADMIN: 'R1',
+    MANAGER: 'R2',
+    STAFF: 'R3'
+};

@@ -14,6 +14,12 @@
             "calender": "Lịch",
             "salary": "Lương",
             "manage-salary": "Quản lý lương"
+        },
+        "staff": {
+            "event": "Sự kiện",
+            "calender": "Lịch",
+            "salary": "Lương",
+            "manage-salary": "Bảng lương"
         }
     },
     "manage-user": {
@@ -31,9 +37,18 @@
         "role": "Vai trò",
         "image": "Ảnh đại diện",
         "save": "Lưu",
-        "edit": "Lưu",
+        "edit": "Sửa",
         "cancel": "Hủy",
         "actions": "Hành động",
         "upload": "Tải ảnh lên"
+    },
+    "manage-event": {
+        "title": "Quản lý sự kiện",
+        "event-name": "Tên sự kiện",
+        "start-day": "Từ ngày",
+        "end-day": "Đến ngày",
+        "save": "Lưu",
+        "edit": "Sửa",
+        "actions": "Hành động"
     }
 }

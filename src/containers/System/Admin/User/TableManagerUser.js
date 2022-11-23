@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './TableManagerUser.scss';
-import * as actions from "../../../store/actions";
-import { LANGUAGES } from '../../../utils';
+import * as actions from "../../../../store/actions";
+import { LANGUAGES } from '../../../../utils';
 
 class TableManagerUser extends Component {
 
