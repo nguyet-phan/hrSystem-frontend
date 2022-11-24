@@ -91,12 +91,15 @@ class ManageEvent extends Component {
     }
 
     handleEditEventFromParent = (event) => {
+        console.log('cehck event', event);
         this.setState({
             eventName: event.eventName,
-            startDay: moment(event.startDay).format(dateFormat.SEND_TO_SERVER),
-            endDay: moment(event.endDay).format(dateFormat.SEND_TO_SERVER),
+            startDay: moment(event.startDay).format(dateFormat.CLIENT_VIEW),
+            endDay: moment(event.endDay).format(dateFormat.CLIENT_VIEW),
             action: CRUD_ACTIONS.EDIT,
             eventEditId: event.id
+        }, () => {
+            console.log('cehck event', this.state);
         })
     }
 

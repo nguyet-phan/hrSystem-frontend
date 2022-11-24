@@ -308,7 +308,6 @@ export const fetchAllEventStart = () => {
     return async (dispatch, getState) => {
         try {
             let res = await getAllEvents("ALL");
-            console.log('check all events: ', res);
             if (res && res.errCode === 0) {
                 dispatch(fetchAllEventsSuccess(res.events));
             } else {
