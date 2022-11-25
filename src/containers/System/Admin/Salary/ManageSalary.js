@@ -6,6 +6,9 @@ import * as actions from "../../../../store/actions";
 import { LANGUAGES } from '../../../../utils';
 
 import Select from 'react-select';
+import DatePicker from '../../../../components/Input/DatePicker';
+import moment from 'moment';
+import { toast } from 'react-toastify';
 
 class ManageSalary extends Component {
 
@@ -13,7 +16,9 @@ class ManageSalary extends Component {
         super(props);
         this.state = {
             selectedStaff: '',
+            selectedMonth: '',
             basicSalary: '',
+            deductionSalary: ''
         }
     }
 
@@ -57,26 +62,52 @@ class ManageSalary extends Component {
         // console.log('check state detail salary: ', this.state);
         this.props.saveBasicSalaries({
             staffId: this.state.selectedStaff.value,
+            month: this.state.selectedMonth.label,
             basicSalary: this.state.basicSalary,
+            deductionSalary: this.state.deductionSalary,
         })
     }
 
-    handleChange = (selectedStaff) => {
+    handleChangeStaff = (selectedStaff) => {
         this.setState({
-            selectedStaff
+            selectedStaff,
+
+        });
+    };
+    handleChangeMonth = (selectedMonth) => {
+        this.setState({
+            selectedMonth
         });
     };
 
-    handleOnChangeBasicSalary = (event) => {
+    onChangeInput = (event, id) => {
+        let copyState = { ...this.state };
+
+        copyState[id] = event.target.value;
+
         this.setState({
-            basicSalary: event.target.value
+            ...copyState
         })
-    };
+    }
+
+
+    onChangeMonth = () => {
+
+    }
 
 
     render() {
         console.log('check state: ', this.state);
-        // const [startDate, setStartDate] = useState(new Date());
+        // console.log('moment month: ', moment(new Date()).format('MM/YYYY'));
+        let arrMonth = [];
+        for (let i = 0; i < 12; i++) {
+            let object = {};
+            object.label = moment(new Date()).add(i, 'months').format('MM/YYYY');
+            object.value = moment(new Date()).add(i, 'months').startOf('month').valueOf;
+
+            arrMonth.push(object);
+        }
+        let { basicSalary, deductionSalary } = this.state;
         return (
             <div className='manage-salary-container container'>
                 <div className='title'>
@@ -88,9 +119,8 @@ class ManageSalary extends Component {
                         <label className='title-detail'>Nhân sự </label>
                         <Select
                             value={this.state.selectedStaff}
-                            onChange={this.handleChange}
+                            onChange={this.handleChangeStaff}
                             options={this.state.listUsers}
-
                         />
                     </div>
 
@@ -101,11 +131,20 @@ class ManageSalary extends Component {
                         showMonthYearPicker
                     /> */}
 
+
                     <div className='month-salary'>
                         <label className='title-detail'>Tháng</label>
-                        <input className='form-control' type='date' />
+                        {/* <DatePicker className='form-control'
+                            onChange={this.onChangeMonth}
+                            value={this.state.month}
+                        // minDate={new Date()}
+                        /> */}
+                        <Select
+                            value={this.state.selectedMonth}
+                            onChange={this.handleChangeMonth}
+                            options={arrMonth}
+                        />
                     </div>
-
                 </div>
                 <hr></hr>
 
@@ -114,14 +153,20 @@ class ManageSalary extends Component {
                         <div className='title-detail'>Lương cơ bản</div>
                         <div className='basic-salary-detail'>
                             <label> Số tiền (VND)</label>
-                            <input className='form-control' type="text" />
+                            <input className='form-control' type="text"
+                                value={basicSalary}
+                                onChange={(event) => { this.onChangeInput(event, 'basicSalary') }}
+                            />
                         </div>
                     </div>
                     <div className='deduction-salary'>
                         <div className='title-detail'>Lương khấu trừ</div>
                         <div className='deduction-salary-detail'>
                             <label> Số ngày nghỉ</label>
-                            <input className='form-control' type="text" placeholder="0" />
+                            <input className='form-control' type="text" placeholder="0"
+                                value={deductionSalary}
+                                onChange={(event) => { this.onChangeInput(event, 'deductionSalary') }}
+                            />
                         </div>
                     </div>
                 </div>

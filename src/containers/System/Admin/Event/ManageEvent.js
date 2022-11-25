@@ -6,8 +6,6 @@ import * as actions from "../../../../store/actions";
 import { LANGUAGES, dateFormat, CRUD_ACTIONS } from '../../../../utils';
 import TableManageEvent from './TableManageEvent';
 
-// import DatePicker from "react-datepicker";
-// import "react-datepicker/dist/react-datepicker.css";
 import DatePicker from '../../../../components/Input/DatePicker';
 import moment from 'moment';
 import { toast } from 'react-toastify';
@@ -86,8 +84,6 @@ class ManageEvent extends Component {
                 endDay: moment(this.state.endDay).format(dateFormat.SEND_TO_SERVER)
             })
         }
-
-        // this.props.fetchAllEvent();
     }
 
     handleEditEventFromParent = (event) => {
