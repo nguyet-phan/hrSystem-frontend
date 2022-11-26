@@ -50,5 +50,16 @@
         "save": "Lưu",
         "edit": "Sửa",
         "actions": "Hành động"
+    },
+    "manage-salary": {
+        "title": "Thông tin chi tiết lương",
+        "bonus-salary": "Lương thưởng",
+        "reason": "Lý do thưởng",
+        "money": "Số tiền",
+        "start-day": "Từ ngày",
+        "end-day": "Đến ngày",
+        "save": "Lưu",
+        "edit": "Sửa",
+        "actions": "Hành động"
     }
 }

@@ -7,18 +7,28 @@
         //     text-transform: uppercase;
         //     font-weight: 600;
         // }
+
+        margin-top: 60px;
+
+        .title {
+            margin-bottom: 20px;
+        }
     
         .title-detail{
             font-weight: 600;
             position: relative;
             height: 30px;
-            margin-top: 10px;
+            margin-bottom: 2px;
+            background-color: #dddddd;
+            padding: 5px;
+            padding-left: 10px;
+            
             .btn-add{
                 border-radius: 50%;
                 border-color: #3073ad;
                 position: absolute;
                 right: 0;
-                height: 26px;
+                height: 25px;
                 color: #3073ad;
                 
             }
@@ -27,14 +37,128 @@
             }
            
         }
+        
+    // Infor ----------------------------------
+    .infor {
+        display: flex;
+        margin-bottom: 30px;
+        // gap: 20px;
     
-        // .btn-primary {
-        //     border-radius: 50%;
-        //     background-color: #3073ad;
-        //     border: #3073ad;
-        // }
+        .select-staff {
+            width: 50%;
+            margin-right: 15px;
+        }
     
-    // Table ----------------------------------
+        .month-salary {
+            width: 50%;
+            margin-left: 15px;
+        }
+    }
+    // Basic - Deduction -------------------------------------
+    .basic-deduction{
+        display: flex;
+        margin-bottom: 15px;
+        .basic-salary {
+            width: 50%;
+            margin-right: 15px;
+            border: #ddd solid 1px;
+                .basic-salary-detail{
+                    display: flex;
+                    padding: 10px;
+                }
+        }
+        .deduction-salary{
+            width: 50%;
+            margin-left: 15px;
+            border: #ddd solid 1px;
+            .deduction-salary-detail{
+                display: flex;
+                padding: 10px;
+            }
+        }
+    }
+    .bonus-project {
+        display: flex;
+        // margin-bottom: 15px;
+        .bonus-salary {
+            width: 50%;
+            margin-right: 15px;
+            border: #ddd solid 1px;
+            .bonus-salary-detail{
+                display: flex;
+                padding: 10px;
+                .left{
+                    width: 50%;
+                    margin-right: 5px;
+                }
+                .right{
+                    width: 50%;
+                    margin-left: 5px; 
+                }
+            }
+        }
+        .project-salary {
+            width: 50%;
+            margin-left: 15px;   
+            border: #ddd solid 1px;
+            .project-salary-detail{
+                display: flex;
+                padding: 10px;
+                .left{
+                    width: 50%;
+                    margin-right: 5px;
+                }
+                .right{
+                    width: 50%;
+                    margin-left: 5px; 
+                }
+            }
+        }
+    }
+    .onsite-overtime {
+        display: flex;
+        margin-bottom: 15px;    
+        .onsite-salary {
+            width: 50%;
+            margin-right: 15px;
+            border: #ddd solid 1px;
+            .onsite-salary-detail{
+                display: flex;
+                padding: 10px;
+                .left {
+                    width: 33%;
+                    margin-right: 10px;
+                }
+                .middle {
+                    width: 33%;
+                    margin-right: 10px;
+                }
+                .right {
+                    width: 33%;
+                }
+            }
+            
+        }
+        .overtime-salary {
+            width: 50%;
+            margin-left: 15px; 
+            border: #ddd solid 1px;
+            .overtime-salary-detail{
+                display: flex;
+                padding: 10px;
+                .left{
+                    width: 50%;
+                    margin-right: 5px;
+                }
+                .right{
+                    width: 50%;
+                    margin-left: 5px; 
+                }
+            }
+        }
+    }
+
+    .total-salary{
         .detail-salary {
             font-family: Arial, Helvetica, sans-serif;
             border-collapse: collapse;
@@ -63,67 +187,6 @@
             background-color: rgb(206, 206, 206);
             color: #000;
         }
-    // Infor ----------------------------------
-    .infor {
-        display: flex;
-        // gap: 20px;
-    
-        .select-staff {
-            width: 50%;
-            margin-right: 15px;
-        }
-    
-        .month-salary {
-            width: 50%;
-            margin-left: 15px;
-        }
-    }
-    // Basic - Deduction -------------------------------------
-    .basic-deduction{
-        display: flex;
-    
-        .basic-salary {
-            width: 50%;
-            margin-right: 15px;
-                .basic-salary-detail{
-                    display: flex;
-                }
-        }
-        .deduction-salary{
-            width: 50%;
-            margin-left: 15px;
-            .deduction-salary-detail{
-                display: flex;
-            }
-        }
-    }
-    .bonus-project {
-        display: flex;
-            
-        .bonus-salary {
-            width: 50%;
-            margin-right: 15px;
-        }
-        .project-salary {
-            width: 50%;
-            margin-left: 15px;
-        }
-    }
-    .onsite-overtime {
-        display: flex;
-            
-        .onsite-salary {
-            width: 50%;
-            margin-right: 15px;
-        }
-        .overtime-salary {
-            width: 50%;
-            margin-left: 15px;
-        }
-    }
-    .total-salary{
-        
-            // background-color: rgb(153, 153, 153);
     }
 }
 

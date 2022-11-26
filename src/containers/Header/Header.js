@@ -39,12 +39,12 @@ class Header extends Component {
     }
 
     render() {
-        console.log('check props: ', this.props);
+        // console.log('check props: ', this.props);
 
         const { processLogout, language, userInfo } = this.props;
 
         return (
-            <div className="header-container">
+            <div className="header-container" style={{ position: 'fixed', width: '100%', top: '0' }}>
                 {/* thanh navigator */}
                 <div className="header-tabs-container">
                     <Navigator menus={this.state.menuApp} />

@@ -50,5 +50,16 @@
         "save": "Save",
         "edit": "Edit",
         "actions": "Actions"
+    },
+    "manage-salary": {
+        "title": "Detail salaries",
+        "bonus-salary": "Bonus salaries",
+        "reason": "Reason",
+        "money": "Money",
+        "start-day": "Start day",
+        "end-day": "End day",
+        "save": "Save",
+        "edit": "Edit",
+        "actions": "Actions"
     }
 }

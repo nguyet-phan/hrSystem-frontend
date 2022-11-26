@@ -87,7 +87,7 @@ class ManageEvent extends Component {
     }
 
     handleEditEventFromParent = (event) => {
-        console.log('cehck event', event);
+        console.log('check event FromParent', event);
         this.setState({
             eventName: event.eventName,
             startDay: moment(event.startDay).format(dateFormat.CLIENT_VIEW),
@@ -95,14 +95,14 @@ class ManageEvent extends Component {
             action: CRUD_ACTIONS.EDIT,
             eventEditId: event.id
         }, () => {
-            console.log('cehck event', this.state);
+            console.log('check event', this.state);
         })
     }
 
     render() {
         let { eventName, startDay, endDay } = this.state;
         return (
-            <div className='manage-event-container container'>
+            <div className='manage-event-container container' style={{ marginTop: '60px' }}>
                 <div className='title'>
                     <FormattedMessage id='manage-event.title' />
                 </div>
@@ -133,7 +133,7 @@ class ManageEvent extends Component {
                         <DatePicker className='form-control'
                             onChange={this.onChangeEndDay}
                             value={this.state.endDay}
-                        // minDate={new Date()}
+                            minDate={new Date(this.state.startDay)}
                         />
                     </div>
                     <button className={this.state.action === CRUD_ACTIONS.EDIT ? 'btn btn-warning mx-3' : 'btn btn-primary mx-3'}

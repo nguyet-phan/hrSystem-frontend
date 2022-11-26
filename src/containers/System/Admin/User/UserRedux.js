@@ -245,7 +245,7 @@ class UserRedux extends Component {
 
         // console.log('check state component: ', this.state);
         return (
-            <div className='user-redux-container'>
+            <div className='user-redux-container' style={{ marginTop: '60px' }}>
                 <div className='title'>
                     <FormattedMessage id='manage-user.title' />
                 </div>

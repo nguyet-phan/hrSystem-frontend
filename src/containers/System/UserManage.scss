@@ -27,7 +27,7 @@
 }
 
 .btn-edit {
-    width: 50px;
+    // width: 50px;
     border: none;
     outline: none;
     background: transparent;
@@ -40,11 +40,12 @@
 }
 
 .btn-delete {
-    width: 50px;
+    // width: 50px;
     border: none;
     outline: none;
     background: transparent;
     color: rgb(235, 15, 15);
+    margin-left: 15px;
 
     &:hover {
         background-color: transparent !important;

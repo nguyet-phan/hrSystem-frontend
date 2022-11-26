@@ -114,7 +114,7 @@ class UserManage extends Component {
         let arrUsers = this.state.arrUsers;
         // properties; nested
         return (
-            <div className='users-continer'>
+            <div className='users-continer' style={{ marginTop: '60px' }}>
                 <ModalUser
                     isOpen={this.state.isOpenModalUser}
                     toggleModal={this.toggleUserModal}

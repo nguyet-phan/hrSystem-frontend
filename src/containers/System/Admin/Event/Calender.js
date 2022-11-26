@@ -59,7 +59,7 @@ class ManageEvent extends Component {
         console.log('check arrEvents: ', arrEvents);
 
         return (
-            <div className='calender-container container'>
+            <div className='calender-container container' style={{ marginTop: '60px' }}>
 
                 <Calendar localizer={localizer}
                     events={arrEvents}

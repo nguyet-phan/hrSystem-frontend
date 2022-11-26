@@ -8,10 +8,8 @@ import { LANGUAGES } from '../../../../utils';
 import Select from 'react-select';
 import DatePicker from '../../../../components/Input/DatePicker';
 import moment from 'moment';
-import { toast } from 'react-toastify';
 
 class ManageSalary extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -24,6 +22,7 @@ class ManageSalary extends Component {
 
     componentDidMount() {
         this.props.fetchUserRedux();
+
     }
 
     buildDataInputSelect = (inputData) => {
@@ -40,6 +39,7 @@ class ManageSalary extends Component {
                 result.push(object)
             })
         }
+
         return result;
     }
 
@@ -62,7 +62,7 @@ class ManageSalary extends Component {
         // console.log('check state detail salary: ', this.state);
         this.props.saveBasicSalaries({
             staffId: this.state.selectedStaff.value,
-            month: this.state.selectedMonth.label,
+            month: this.state.selectedMonth.value,
             basicSalary: this.state.basicSalary,
             deductionSalary: this.state.deductionSalary,
         })
@@ -91,19 +91,16 @@ class ManageSalary extends Component {
     }
 
 
-    onChangeMonth = () => {
-
-    }
-
-
     render() {
-        console.log('check state: ', this.state);
+        console.log('check bonussalary state: ', this.state);
+
         // console.log('moment month: ', moment(new Date()).format('MM/YYYY'));
         let arrMonth = [];
-        for (let i = 0; i < 12; i++) {
+        for (let i = 0; i < 5; i++) {
             let object = {};
             object.label = moment(new Date()).add(i, 'months').format('MM/YYYY');
-            object.value = moment(new Date()).add(i, 'months').startOf('month').valueOf;
+            // object.value = moment(new Date()).add(i, 'months').startOf('month').valueOf;
+            object.value = moment(new Date()).add(i, 'months').format('MM/YYYY');
 
             arrMonth.push(object);
         }
@@ -111,38 +108,27 @@ class ManageSalary extends Component {
         return (
             <div className='manage-salary-container container'>
                 <div className='title'>
-                    Thông tin lương cá nhân
+                    <FormattedMessage id='manage-salary.title' />
                 </div>
 
                 <div className='infor'>
                     <div className='select-staff'>
-                        <label className='title-detail'>Nhân sự </label>
+                        <div className='title-detail'>Nhân sự</div>
                         <Select
                             value={this.state.selectedStaff}
                             onChange={this.handleChangeStaff}
                             options={this.state.listUsers}
+                            placeholder='Chọn nhân sự'
                         />
                     </div>
 
-                    {/* <DatePicker
-                        selected={startDate}
-                        onChange={(date) => setStartDate(date)}
-                        dateFormat="MM/yyyy"
-                        showMonthYearPicker
-                    /> */}
-
-
                     <div className='month-salary'>
-                        <label className='title-detail'>Tháng</label>
-                        {/* <DatePicker className='form-control'
-                            onChange={this.onChangeMonth}
-                            value={this.state.month}
-                        // minDate={new Date()}
-                        /> */}
+                        <div className='title-detail'>Tháng</div>
                         <Select
                             value={this.state.selectedMonth}
                             onChange={this.handleChangeMonth}
                             options={arrMonth}
+                            placeholder='Chọn tháng'
                         />
                     </div>
                 </div>
@@ -172,103 +158,99 @@ class ManageSalary extends Component {
                 </div>
 
                 <div className='bonus-project'>
-                    <div className='bonus-salary form-group'>
+                    {/* <div className='bonus-salary form-group'>
                         <div className='title-detail'>
-                            Lương thưởng
+                            <FormattedMessage id='manage-salary.bonus-salary' />
                             <button className='btn-add'>
                                 <i className='fas fa-plus'></i>
                             </button>
-
                         </div>
-                        <table className='detail-salary'>
-                            <thead>
-                                <tr>
-                                    <th>Lý do</th>
-                                    <th>Số tiền (VND)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Thưởng </td>
-                                    <td>500000</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <TableBonusSalary
+                            staffId={this.state.selectedStaff && this.state.selectedStaff.value ? this.state.selectedStaff.value : -1}
+                            month={this.state.selectedMonth && this.state.selectedMonth.value ? this.state.selectedMonth.value : moment(new Date()).format('MM/YYYY')}
+                        />
+                    </div> */}
+
+                    <div className='bonus-salary form-group'>
+                        <div className='title-detail'>
+                            Lương thưởng
+                        </div>
+
+                        <div className='bonus-salary-detail'>
+                            <div className='left'>
+                                <label> Lý do thưởng</label>
+                                <input className='form-control' type="text" />
+                            </div>
+                            <div className='right'>
+                                <label> Số tiền (VND)</label>
+                                <input className='form-control' type="text" />
+                            </div>
+                        </div>
+
                     </div>
 
                     <div className='project-salary form-group'>
                         <div className='title-detail'>
                             Lương dự án
-                            <button className='btn-add'>
-                                <i className='fas fa-plus'></i>
-                            </button>
                         </div>
-                        <table className='detail-salary'>
-                            <thead>
-                                <tr>
-                                    <th>Tên dự án</th>
-                                    <th>Số tiền (VND)</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Dự án 1</td>
-                                    <td>1000000</td>
-                                </tr>
-                            </tbody>
-                        </table>
+
+                        <div className='project-salary-detail'>
+                            <div className='left'>
+                                <label> Dự án</label>
+                                <input className='form-control' type="text" />
+                            </div>
+                            <div className='right'>
+                                <label> Số tiền (VND)</label>
+                                <input className='form-control' type="text" />
+                            </div>
+                        </div>
+
                     </div>
-                    <hr></hr>
+
                 </div>
 
                 <div className='onsite-overtime'>
-                    <div className='onsite-salary'>
+
+                    <div className='onsite-salary form-group'>
                         <div className='title-detail'>
                             Lương onsite
-                            <button className='btn-add'>
-                                <i className='fas fa-plus'></i>
-                            </button>
                         </div>
-                        <table className='detail-salary'>
-                            <thead>
-                                <tr>
-                                    <th>Địa điểm</th>
-                                    <th>Từ ngày</th>
-                                    <th>Đến ngày</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Dự án 1</td>
-                                    <td>01/11/2022</td>
-                                    <td>11/11/2022</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <hr></hr>
 
-                    <div className='overtime-salary'>
+                        <div className='onsite-salary-detail'>
+                            <div className='left'>
+                                <label> Địa điểm onsite </label>
+                                <input className='form-control' type="text" />
+                            </div>
+                            <div className='middle'>
+                                <label> Từ ngày </label>
+                                <input className='form-control' type="date" />
+                            </div>
+                            <div className='right'>
+                                <label> Đến ngày</label>
+                                <input className='form-control' type="date" />
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div className='overtime-salary form-group'>
                         <div className='title-detail'>
                             Lương overtime
                             <button className='btn-add'>
                                 <i className='fas fa-plus'></i>
                             </button>
                         </div>
-                        <table className='detail-salary'>
-                            <thead>
-                                <tr>
-                                    <th>Ngày</th>
-                                    <th>Số giờ</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>01/11/2022</td>
-                                    <td>2</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                        <div className='overtime-salary-detail'>
+                            <div className='left'>
+                                <label> Ngày</label>
+                                <input className='form-control' type="text" />
+                            </div>
+                            <div className='right'>
+                                <label> Số giờ</label>
+                                <input className='form-control' type="text" />
+                            </div>
+                        </div>
+
                     </div>
                 </div>
                 <hr></hr>
@@ -293,7 +275,7 @@ class ManageSalary extends Component {
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Phan Thị Nguyệt</td>
+                                <td>Phan Nguyệt</td>
                                 <td>11/2022</td>
                                 <td>5000000</td>
                                 <td>500000</td>

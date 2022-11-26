@@ -25,7 +25,7 @@ class ManageDepartment extends Component {
     render() {
 
         return (
-            <div className='container'>
+            <div className='container' style={{ marginTop: '60px' }}>
                 <div className='title'>
                     Quản lý phòng ban
                 </div>
