@@ -92,9 +92,7 @@ class ManageSalary extends Component {
 
 
     render() {
-        console.log('check bonussalary state: ', this.state);
-
-        // console.log('moment month: ', moment(new Date()).format('MM/YYYY'));
+        console.log('check salary state: ', this.state);
         let arrMonth = [];
         for (let i = 0; i < 5; i++) {
             let object = {};
@@ -113,22 +111,22 @@ class ManageSalary extends Component {
 
                 <div className='infor'>
                     <div className='select-staff'>
-                        <div className='title-detail'>Nhân sự</div>
+                        <div className='title-detail'><FormattedMessage id='manage-salary.staff' /></div>
                         <Select
                             value={this.state.selectedStaff}
                             onChange={this.handleChangeStaff}
                             options={this.state.listUsers}
-                            placeholder='Chọn nhân sự'
+                            placeholder={<FormattedMessage id='manage-salary.select-staff' />}
                         />
                     </div>
 
                     <div className='month-salary'>
-                        <div className='title-detail'>Tháng</div>
+                        <div className='title-detail'><FormattedMessage id='manage-salary.month' /></div>
                         <Select
                             value={this.state.selectedMonth}
                             onChange={this.handleChangeMonth}
                             options={arrMonth}
-                            placeholder='Chọn tháng'
+                            placeholder={<FormattedMessage id='manage-salary.select-month' />}
                         />
                     </div>
                 </div>
@@ -136,19 +134,19 @@ class ManageSalary extends Component {
 
                 <div className='basic-deduction'>
                     <div className='basic-salary'>
-                        <div className='title-detail'>Lương cơ bản</div>
+                        <div className='title-detail'><FormattedMessage id='manage-salary.basic-salary' /></div>
                         <div className='basic-salary-detail'>
-                            <label> Số tiền (VND)</label>
-                            <input className='form-control' type="text"
+                            <label> <FormattedMessage id='manage-salary.money' /> (VND)</label>
+                            <input className='form-control' type="text" placeholder="0"
                                 value={basicSalary}
                                 onChange={(event) => { this.onChangeInput(event, 'basicSalary') }}
                             />
                         </div>
                     </div>
                     <div className='deduction-salary'>
-                        <div className='title-detail'>Lương khấu trừ</div>
+                        <div className='title-detail'><FormattedMessage id='manage-salary.deduction-salary' /></div>
                         <div className='deduction-salary-detail'>
-                            <label> Số ngày nghỉ</label>
+                            <label><FormattedMessage id='manage-salary.deduction-days' /></label>
                             <input className='form-control' type="text" placeholder="0"
                                 value={deductionSalary}
                                 onChange={(event) => { this.onChangeInput(event, 'deductionSalary') }}
@@ -158,32 +156,19 @@ class ManageSalary extends Component {
                 </div>
 
                 <div className='bonus-project'>
-                    {/* <div className='bonus-salary form-group'>
-                        <div className='title-detail'>
-                            <FormattedMessage id='manage-salary.bonus-salary' />
-                            <button className='btn-add'>
-                                <i className='fas fa-plus'></i>
-                            </button>
-                        </div>
-                        <TableBonusSalary
-                            staffId={this.state.selectedStaff && this.state.selectedStaff.value ? this.state.selectedStaff.value : -1}
-                            month={this.state.selectedMonth && this.state.selectedMonth.value ? this.state.selectedMonth.value : moment(new Date()).format('MM/YYYY')}
-                        />
-                    </div> */}
-
                     <div className='bonus-salary form-group'>
                         <div className='title-detail'>
-                            Lương thưởng
+                            <FormattedMessage id='manage-salary.bonus-salary' />
                         </div>
 
                         <div className='bonus-salary-detail'>
                             <div className='left'>
-                                <label> Lý do thưởng</label>
+                                <label> <FormattedMessage id='manage-salary.reason' /></label>
                                 <input className='form-control' type="text" />
                             </div>
                             <div className='right'>
-                                <label> Số tiền (VND)</label>
-                                <input className='form-control' type="text" />
+                                <label> <FormattedMessage id='manage-salary.money' />(VND)</label>
+                                <input className='form-control' type="text" placeholder="0" />
                             </div>
                         </div>
 
@@ -191,17 +176,17 @@ class ManageSalary extends Component {
 
                     <div className='project-salary form-group'>
                         <div className='title-detail'>
-                            Lương dự án
+                            <FormattedMessage id='manage-salary.project-salary' />
                         </div>
 
                         <div className='project-salary-detail'>
                             <div className='left'>
-                                <label> Dự án</label>
+                                <label><FormattedMessage id='manage-salary.project-name' /></label>
                                 <input className='form-control' type="text" />
                             </div>
                             <div className='right'>
-                                <label> Số tiền (VND)</label>
-                                <input className='form-control' type="text" />
+                                <label> <FormattedMessage id='manage-salary.money' />(VND)</label>
+                                <input className='form-control' type="text" placeholder="0" />
                             </div>
                         </div>
 
@@ -213,20 +198,20 @@ class ManageSalary extends Component {
 
                     <div className='onsite-salary form-group'>
                         <div className='title-detail'>
-                            Lương onsite
+                            <FormattedMessage id='manage-salary.onsite-salary' />
                         </div>
 
                         <div className='onsite-salary-detail'>
                             <div className='left'>
-                                <label> Địa điểm onsite </label>
+                                <label><FormattedMessage id='manage-salary.onsite-place' /></label>
                                 <input className='form-control' type="text" />
                             </div>
                             <div className='middle'>
-                                <label> Từ ngày </label>
+                                <label><FormattedMessage id='manage-salary.start-day' /></label>
                                 <input className='form-control' type="date" />
                             </div>
                             <div className='right'>
-                                <label> Đến ngày</label>
+                                <label><FormattedMessage id='manage-salary.end-day' /></label>
                                 <input className='form-control' type="date" />
                             </div>
                         </div>
@@ -235,20 +220,14 @@ class ManageSalary extends Component {
 
                     <div className='overtime-salary form-group'>
                         <div className='title-detail'>
-                            Lương overtime
+                            <FormattedMessage id='manage-salary.overtime-salary' />
                             <button className='btn-add'>
                                 <i className='fas fa-plus'></i>
                             </button>
                         </div>
                         <div className='overtime-salary-detail'>
-                            <div className='left'>
-                                <label> Ngày</label>
-                                <input className='form-control' type="text" />
-                            </div>
-                            <div className='right'>
-                                <label> Số giờ</label>
-                                <input className='form-control' type="text" />
-                            </div>
+                            <label> <FormattedMessage id='manage-salary.overtime-hours' /></label>
+                            <input className='form-control' type="text" placeholder="0" />
                         </div>
 
                     </div>
@@ -257,20 +236,20 @@ class ManageSalary extends Component {
 
                 <div className='total-salary'>
                     <div className='title-detail'>
-                        Tổng lương
+                        <FormattedMessage id='manage-salary.total-salary' />
                     </div>
                     <table className='detail-salary'>
                         <thead>
                             <tr>
-                                <th>Nhân viên</th>
-                                <th>Tháng</th>
-                                <th>Lương cơ bản</th>
-                                <th>Lương dự án</th>
-                                <th>Lương thưởng</th>
-                                <th>Lương overtime</th>
-                                <th>Lương onsite</th>
-                                <th>Khấu trừ</th>
-                                <th>Tổng lương</th>
+                                <th><FormattedMessage id='manage-salary.staff' /></th>
+                                <th><FormattedMessage id='manage-salary.month' /></th>
+                                <th><FormattedMessage id='manage-salary.basic-salary' /></th>
+                                <th><FormattedMessage id='manage-salary.bonus-salary' /></th>
+                                <th><FormattedMessage id='manage-salary.project-salary' /></th>
+                                <th><FormattedMessage id='manage-salary.onsite-salary' /></th>
+                                <th><FormattedMessage id='manage-salary.overtime-salary' /></th>
+                                <th><FormattedMessage id='manage-salary.deduction-salary' /></th>
+                                <th><FormattedMessage id='manage-salary.total-salary' /></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -294,8 +273,8 @@ class ManageSalary extends Component {
                 <button className='btn btn-warning m-3'
                     onClick={() => this.handleSaveDetailSalary()}
                 >
-                    {/* <FormattedMessage id='manage-user.save' /> */}
-                    Lưu thông tin lương
+                    <FormattedMessage id='manage-user.save' />
+
                 </button>
             </div>
         );
