@@ -252,13 +252,13 @@ export const saveBasicSalaries = (data) => {
         try {
             let res = await saveBasicSalaryService(data);
             if (res && res.errCode === 0) {
-                toast.success("Save basic salaries succeed!");
+                toast.success("Lưu bảng lương thành công!");
                 dispatch({
                     type: actionTypes.SAVE_BASIC_SALARY_SUCCESS,
                 });
             } else {
                 console.log('SAVE_BASIC_SALARY_FAILDED error: ', res);
-                toast.error("SAVE_BASIC_SALARY_FAILDED Failed!");
+                toast.error("Thiếu thông tin nhân viên/ tháng/ lương cơ bản!");
                 dispatch({
                     type: actionTypes.SAVE_BASIC_SALARY_FAILDED
                 });

@@ -16,7 +16,15 @@ class ManageSalary extends Component {
             selectedStaff: '',
             selectedMonth: '',
             basicSalary: '',
-            deductionSalary: ''
+            deductionSalary: '',
+            reason: '',
+            bonusSalary: '',
+            projectName: '',
+            projectSalary: '',
+            onsitePlace: '',
+            startDay: '',
+            endDay: '',
+            overtimeHours: ''
         }
     }
 
@@ -65,6 +73,15 @@ class ManageSalary extends Component {
             month: this.state.selectedMonth.value,
             basicSalary: this.state.basicSalary,
             deductionSalary: this.state.deductionSalary,
+
+            reason: this.state.reason,
+            bonusSalary: this.state.bonusSalary,
+            projectName: this.state.projectName,
+            projectSalary: this.state.projectSalary,
+            onsitePlace: this.state.onsitePlace,
+            startDay: this.state.startDay,
+            endDay: this.state.endDay,
+            overtimeHours: this.state.overtimeHours
         })
     }
 
@@ -93,6 +110,8 @@ class ManageSalary extends Component {
 
     render() {
         console.log('check salary state: ', this.state);
+
+        // console.log('check props salary:', this.props);
         let arrMonth = [];
         for (let i = 0; i < 5; i++) {
             let object = {};
@@ -102,7 +121,7 @@ class ManageSalary extends Component {
 
             arrMonth.push(object);
         }
-        let { basicSalary, deductionSalary } = this.state;
+
         return (
             <div className='manage-salary-container container'>
                 <div className='title'>
@@ -138,7 +157,7 @@ class ManageSalary extends Component {
                         <div className='basic-salary-detail'>
                             <label> <FormattedMessage id='manage-salary.money' /> (VND)</label>
                             <input className='form-control' type="text" placeholder="0"
-                                value={basicSalary}
+                                value={this.state.basicSalary}
                                 onChange={(event) => { this.onChangeInput(event, 'basicSalary') }}
                             />
                         </div>
@@ -148,7 +167,7 @@ class ManageSalary extends Component {
                         <div className='deduction-salary-detail'>
                             <label><FormattedMessage id='manage-salary.deduction-days' /></label>
                             <input className='form-control' type="text" placeholder="0"
-                                value={deductionSalary}
+                                value={this.state.deductionSalary}
                                 onChange={(event) => { this.onChangeInput(event, 'deductionSalary') }}
                             />
                         </div>
@@ -164,11 +183,17 @@ class ManageSalary extends Component {
                         <div className='bonus-salary-detail'>
                             <div className='left'>
                                 <label> <FormattedMessage id='manage-salary.reason' /></label>
-                                <input className='form-control' type="text" />
+                                <input className='form-control' type="text"
+                                    value={this.state.reason}
+                                    onChange={(event) => { this.onChangeInput(event, 'reason') }}
+                                />
                             </div>
                             <div className='right'>
                                 <label> <FormattedMessage id='manage-salary.money' />(VND)</label>
-                                <input className='form-control' type="text" placeholder="0" />
+                                <input className='form-control' type="text" placeholder="0"
+                                    value={this.state.bonusSalary}
+                                    onChange={(event) => { this.onChangeInput(event, 'bonusSalary') }}
+                                />
                             </div>
                         </div>
 
@@ -182,11 +207,17 @@ class ManageSalary extends Component {
                         <div className='project-salary-detail'>
                             <div className='left'>
                                 <label><FormattedMessage id='manage-salary.project-name' /></label>
-                                <input className='form-control' type="text" />
+                                <input className='form-control' type="text"
+                                    value={this.state.projectName}
+                                    onChange={(event) => { this.onChangeInput(event, 'projectName') }}
+                                />
                             </div>
                             <div className='right'>
                                 <label> <FormattedMessage id='manage-salary.money' />(VND)</label>
-                                <input className='form-control' type="text" placeholder="0" />
+                                <input className='form-control' type="text" placeholder="0"
+                                    value={this.state.projectSalary}
+                                    onChange={(event) => { this.onChangeInput(event, 'projectSalary') }}
+                                />
                             </div>
                         </div>
 
@@ -204,15 +235,24 @@ class ManageSalary extends Component {
                         <div className='onsite-salary-detail'>
                             <div className='left'>
                                 <label><FormattedMessage id='manage-salary.onsite-place' /></label>
-                                <input className='form-control' type="text" />
+                                <input className='form-control' type="text"
+                                    value={this.state.onsitePlace}
+                                    onChange={(event) => { this.onChangeInput(event, 'onsitePlace') }}
+                                />
                             </div>
                             <div className='middle'>
                                 <label><FormattedMessage id='manage-salary.start-day' /></label>
-                                <input className='form-control' type="date" />
+                                <input className='form-control' type="date"
+                                    value={this.state.startDay}
+                                    onChange={(event) => { this.onChangeInput(event, 'startDay') }}
+                                />
                             </div>
                             <div className='right'>
                                 <label><FormattedMessage id='manage-salary.end-day' /></label>
-                                <input className='form-control' type="date" />
+                                <input className='form-control' type="date"
+                                    value={this.state.endDay}
+                                    onChange={(event) => { this.onChangeInput(event, 'endDay') }}
+                                />
                             </div>
                         </div>
 
@@ -221,13 +261,16 @@ class ManageSalary extends Component {
                     <div className='overtime-salary form-group'>
                         <div className='title-detail'>
                             <FormattedMessage id='manage-salary.overtime-salary' />
-                            <button className='btn-add'>
+                            {/* <button className='btn-add'>
                                 <i className='fas fa-plus'></i>
-                            </button>
+                            </button> */}
                         </div>
                         <div className='overtime-salary-detail'>
                             <label> <FormattedMessage id='manage-salary.overtime-hours' /></label>
-                            <input className='form-control' type="text" placeholder="0" />
+                            <input className='form-control' type="text" placeholder="0"
+                                value={this.state.overtimeHours}
+                                onChange={(event) => { this.onChangeInput(event, 'overtimeHours') }}
+                            />
                         </div>
 
                     </div>
@@ -237,12 +280,12 @@ class ManageSalary extends Component {
                 <div className='total-salary'>
                     <div className='title-detail'>
                         <FormattedMessage id='manage-salary.total-salary' />
+                        {this.state.selectedMonth.value}
                     </div>
                     <table className='detail-salary'>
                         <thead>
                             <tr>
                                 <th><FormattedMessage id='manage-salary.staff' /></th>
-                                <th><FormattedMessage id='manage-salary.month' /></th>
                                 <th><FormattedMessage id='manage-salary.basic-salary' /></th>
                                 <th><FormattedMessage id='manage-salary.bonus-salary' /></th>
                                 <th><FormattedMessage id='manage-salary.project-salary' /></th>
@@ -255,7 +298,6 @@ class ManageSalary extends Component {
                         <tbody>
                             <tr>
                                 <td>Phan Nguyệt</td>
-                                <td>11/2022</td>
                                 <td>5000000</td>
                                 <td>500000</td>
                                 <td>200000</td>
