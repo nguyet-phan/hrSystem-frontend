@@ -25,6 +25,7 @@
     "manage-user": {
         "title": "Quản lý tài khoản",
         "add": "Thêm mới người dùng",
+        "search": "Tìm kiếm theo tên nhân viên: ",
         "userId": "Mã NV",
         "email": "Email",
         "password": "Mật khẩu",
@@ -44,6 +45,7 @@
     },
     "manage-event": {
         "title": "Quản lý sự kiện",
+        "search": "Tìm kiếm sự kiện :",
         "event-name": "Tên sự kiện",
         "start-day": "Từ ngày",
         "end-day": "Đến ngày",

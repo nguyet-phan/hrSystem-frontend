@@ -29,3 +29,17 @@ html {
     -webkit-box-shadow: 2px 2px 4px 0 $box-shadow-color;
   }
 }
+
+body ::-webkit-scrollbar {
+  width: 10px;
+}
+
+body ::-webkit-scrollbar-thumb{
+  background-image: linear-gradient(115deg, #56d8e4 10%, #9f01ea 90%);
+  border-radius: 100rem;
+}
+
+body ::-webkit-scrollbar-track {
+  background-color: #ccc;
+  border-radius: 100rem;
+}

@@ -3,7 +3,7 @@ import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
 import './ManageSalary.scss';
 import * as actions from "../../../../store/actions";
-import { LANGUAGES } from '../../../../utils';
+import { LANGUAGES, dateFormat } from '../../../../utils';
 
 import Select from 'react-select';
 import DatePicker from '../../../../components/Input/DatePicker';
@@ -174,8 +174,8 @@ class ManageSalary extends Component {
         if (resOnsite && resOnsite.errCode === 0 && resOnsite.data && resOnsite.data.place) {
             this.setState({
                 onsitePlace: resOnsite.data.place,
-                startDay: resOnsite.data.startDay,
-                endDay: resOnsite.data.endDay,
+                startDay: moment(resOnsite.data.startDay).format(dateFormat.CLIENT_VIEW),
+                endDay: moment(resOnsite.data.endDay).format(dateFormat.CLIENT_VIEW),
             })
         }
         else {
@@ -215,6 +215,16 @@ class ManageSalary extends Component {
         })
     }
 
+    onChangeStartDay = (date) => {
+        this.setState({
+            startDay: date[0],
+        })
+    }
+    onChangeEndDay = (date) => {
+        this.setState({
+            endDay: date[0],
+        })
+    }
 
     render() {
         console.log('check salary state: ', this.state);
@@ -352,16 +362,18 @@ class ManageSalary extends Component {
                             </div>
                             <div className='middle'>
                                 <label><FormattedMessage id='manage-salary.start-day' /></label>
-                                <input className='form-control' type="date"
+                                <DatePicker className='form-control'
+                                    onChange={this.onChangeStartDay}
                                     value={this.state.startDay}
-                                    onChange={(event) => { this.onChangeInput(event, 'startDay') }}
+                                // minDate={new Date()}
                                 />
                             </div>
                             <div className='right'>
                                 <label><FormattedMessage id='manage-salary.end-day' /></label>
-                                <input className='form-control' type="date"
+                                <DatePicker className='form-control'
+                                    onChange={this.onChangeEndDay}
                                     value={this.state.endDay}
-                                    onChange={(event) => { this.onChangeInput(event, 'endDay') }}
+                                // minDate={new Date(this.state.startDay)}
                                 />
                             </div>
                         </div>

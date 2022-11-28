@@ -10,6 +10,7 @@ import DatePicker from '../../../../components/Input/DatePicker';
 import moment from 'moment';
 import { toast } from 'react-toastify';
 
+
 class ManageEvent extends Component {
 
     constructor(props) {
@@ -20,7 +21,8 @@ class ManageEvent extends Component {
             endDay: '',
 
             action: '',
-            eventEditId: ''
+            eventEditId: '',
+
         }
     }
 
@@ -106,6 +108,7 @@ class ManageEvent extends Component {
                 <div className='title'>
                     <FormattedMessage id='manage-event.title' />
                 </div>
+
                 <div className='form-manage-event form-group'>
                     <div className='title-event '>
                         <label>
@@ -136,7 +139,7 @@ class ManageEvent extends Component {
                             minDate={new Date(this.state.startDay)}
                         />
                     </div>
-                    <button className={this.state.action === CRUD_ACTIONS.EDIT ? 'btn btn-warning mx-3' : 'btn btn-primary mx-3'}
+                    <button className={this.state.action === CRUD_ACTIONS.EDIT ? 'btn btn-warning' : 'btn btn-primary'}
                         onClick={() => this.handleSaveEvent()}
                     >
                         {this.state.action === CRUD_ACTIONS.EDIT ?

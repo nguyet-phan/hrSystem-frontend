@@ -56,7 +56,7 @@ class ManageEvent extends Component {
                 }
             )
         });
-        console.log('check arrEvents: ', arrEvents);
+        // console.log('check arrEvents: ', arrEvents);
 
         return (
             <div className='calender-container container' style={{ marginTop: '60px' }}>

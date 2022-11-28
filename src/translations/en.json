@@ -25,6 +25,7 @@
     "manage-user": {
         "title": "Manage Users",
         "add": "Add a new user",
+        "search": "Search the user: ",
         "userId": "ID",
         "email": "Email",
         "password": "Password",
@@ -44,6 +45,7 @@
     },
     "manage-event": {
         "title": "Manage Events",
+        "search": "Search the event: ",
         "event-name": "Event's name",
         "start-day": "Start Day",
         "end-day": "End Day",
