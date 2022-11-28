@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Redirect, Route, Switch } from 'react-router-dom';
 import Header from '../containers/Header/Header';
+import Sidebar from '../containers/Sidebar/Sidebar';
 import UserManage from '../containers/System/UserManage';
 import UserRedux from '../containers/System/Admin/User/UserRedux';
 import ManageDepartment from '../containers/System/Admin/Department/ManageDepartment';
@@ -15,6 +16,7 @@ class System extends Component {
         return (
             <React.Fragment>
                 {isLoggedIn && <Header />}
+                {/* {isLoggedIn && <Sidebar />} */}
                 <div className="system-container">
                     <div className="system-list">
                         <Switch>

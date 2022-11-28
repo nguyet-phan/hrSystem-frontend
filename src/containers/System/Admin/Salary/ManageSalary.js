@@ -8,6 +8,10 @@ import { LANGUAGES } from '../../../../utils';
 import Select from 'react-select';
 import DatePicker from '../../../../components/Input/DatePicker';
 import moment from 'moment';
+import {
+    getBasicSalaryByIdService, getDeductionSalaryByIdService, getBonusSalaryByIdService,
+    getProjectSalaryByIdService, getOvertimeSalaryByIdService, getOnsiteSalaryByIdService
+} from '../../../../services/userService';
 
 class ManageSalary extends Component {
     constructor(props) {
@@ -64,10 +68,11 @@ class ManageSalary extends Component {
                 listUsers: dataSelect
             })
         }
+
+
     }
 
     handleSaveDetailSalary = () => {
-        // console.log('check state detail salary: ', this.state);
         this.props.saveBasicSalaries({
             staffId: this.state.selectedStaff.value,
             month: this.state.selectedMonth.value,
@@ -85,16 +90,119 @@ class ManageSalary extends Component {
         })
     }
 
-    handleChangeStaff = (selectedStaff) => {
+    handleChangeSelect = async (selectedOption, name) => {
+        let stateName = name.name;
+        let stateCopy = { ...this.state };
+        stateCopy[stateName] = selectedOption;
         this.setState({
-            selectedStaff,
+            ...stateCopy
+        })
+        // console.log('check select: ', selectedOption, stateName);
+        let staffId = '', month = '';
+        if (stateName === 'selectedStaff') {
+            staffId = selectedOption.value;
+            month = this.state.selectedMonth.value;
+        } else {
+            staffId = this.state.selectedStaff.value;
+            month = selectedOption.value;
+        }
+        // console.log('check staff, month: ', staffId, month);
+        let resBasic = await getBasicSalaryByIdService(staffId, month);
+        if (resBasic && resBasic.errCode === 0 && resBasic.data && resBasic.data.basicSalaries) {
+            this.setState({
+                basicSalary: resBasic.data.basicSalaries,
+            })
+        }
+        else {
+            this.setState({
+                basicSalary: '',
+            })
+        }
+        // console.log('check getBasicSalaryByIdService resBasic: ', resBasic);
+        // console.log('check getBasicSalaryByIdService basicSalary: ', resBasic.data.basicSalaries);
 
-        });
-    };
-    handleChangeMonth = (selectedMonth) => {
-        this.setState({
-            selectedMonth
-        });
+        let resDeduction = await getDeductionSalaryByIdService(staffId, month);
+        if (resDeduction && resDeduction.errCode === 0 && resDeduction.data && resDeduction.data.quantity) {
+            this.setState({
+                deductionSalary: resDeduction.data.quantity,
+            })
+        }
+        else {
+            this.setState({
+                deductionSalary: '',
+            })
+        }
+
+        // console.log('check getBasicSalaryByIdService resBasic: ', resDeduction);
+        // console.log('check getBasicSalaryByIdService basicSalary: ', resDeduction.data.quantity);
+
+        let resBonus = await getBonusSalaryByIdService(staffId, month);
+        if (resBonus && resBonus.errCode === 0 && resBonus.data && resBonus.data.salary) {
+            this.setState({
+                reason: resBonus.data.reason,
+                bonusSalary: resBonus.data.salary,
+            })
+        }
+        else {
+            this.setState({
+                reason: '',
+                bonusSalary: '',
+            })
+        }
+
+        // console.log('check getBasicSalaryByIdService resBasic: ', resBonus);
+        // console.log('check getBasicSalaryByIdService basicSalary: ', resBonus.data.salary);
+
+        let resProject = await getProjectSalaryByIdService(staffId, month);
+        if (resProject && resProject.errCode === 0 && resProject.data && resProject.data.salary) {
+            this.setState({
+                projectName: resProject.data.projectName,
+                projectSalary: resProject.data.salary,
+            })
+        }
+        else {
+            this.setState({
+                projectName: '',
+                projectSalary: '',
+            })
+        }
+
+        // console.log('check getBasicSalaryByIdService resBasic: ', resProject);
+        // console.log('check getBasicSalaryByIdService basicSalary: ', resProject.data.salary);
+
+        let resOnsite = await getOnsiteSalaryByIdService(staffId, month);
+        if (resOnsite && resOnsite.errCode === 0 && resOnsite.data && resOnsite.data.place) {
+            this.setState({
+                onsitePlace: resOnsite.data.place,
+                startDay: resOnsite.data.startDay,
+                endDay: resOnsite.data.endDay,
+            })
+        }
+        else {
+            this.setState({
+                onsitePlace: '',
+                startDay: '',
+                endDay: '',
+            })
+        }
+
+        console.log('check getBasicSalaryByIdService resBasic: ', resOnsite);
+        console.log('check getBasicSalaryByIdService basicSalary: ', resOnsite.data.place);
+
+        let resOvertime = await getOvertimeSalaryByIdService(staffId, month);
+        if (resOvertime && resOvertime.errCode === 0 && resOvertime.data && resOvertime.data.hour) {
+            this.setState({
+                overtimeHours: resOvertime.data.hour,
+            })
+        }
+        else {
+            this.setState({
+                overtimeHours: '',
+            })
+        }
+
+        // console.log('check getBasicSalaryByIdService resBasic: ', resOvertime);
+        // console.log('check getBasicSalaryByIdService basicSalary: ', resOvertime.data.hour);
     };
 
     onChangeInput = (event, id) => {
@@ -132,8 +240,9 @@ class ManageSalary extends Component {
                     <div className='select-staff'>
                         <div className='title-detail'><FormattedMessage id='manage-salary.staff' /></div>
                         <Select
+                            name={'selectedStaff'}
                             value={this.state.selectedStaff}
-                            onChange={this.handleChangeStaff}
+                            onChange={this.handleChangeSelect}
                             options={this.state.listUsers}
                             placeholder={<FormattedMessage id='manage-salary.select-staff' />}
                         />
@@ -142,8 +251,9 @@ class ManageSalary extends Component {
                     <div className='month-salary'>
                         <div className='title-detail'><FormattedMessage id='manage-salary.month' /></div>
                         <Select
+                            name={'selectedMonth'}
                             value={this.state.selectedMonth}
-                            onChange={this.handleChangeMonth}
+                            onChange={this.handleChangeSelect}
                             options={arrMonth}
                             placeholder={<FormattedMessage id='manage-salary.select-month' />}
                         />
