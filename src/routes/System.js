@@ -7,6 +7,8 @@ import UserManage from '../containers/System/UserManage';
 import UserRedux from '../containers/System/Admin/User/UserRedux';
 import Profile from '../containers/System/Admin/Profile/Profile';
 import ManageSalary from '../containers/System/Admin/Salary/ManageSalary';
+import ManageSalaryMonth from '../containers/System/Admin/Salary/ManageSalaryMonth';
+import ManageSalaryYear from '../containers/System/Admin/Salary/ManageSalaryYear';
 import ManageEvent from '../containers/System/Admin/Event/ManageEvent';
 import Calender from '../containers/System/Admin/Event/Calender';
 
@@ -20,8 +22,10 @@ class System extends Component {
                 <div className="system-container">
                     <div className="system-list">
                         <Switch>
-                            <Route path="/system/user-manage" component={UserManage} />
+                            {/* <Route path="/system/user-manage" component={UserManage} /> */}
                             <Route path="/system/user-redux" component={UserRedux} />
+                            <Route path="/system/manage-salary-year" component={ManageSalaryYear} />
+                            <Route path="/system/manage-salary-month" component={ManageSalaryMonth} />
                             <Route path="/system/manage-salary" component={ManageSalary} />
                             <Route path="/system/manage-event" component={ManageEvent} />
                             <Route path="/system/calender" component={Calender} />

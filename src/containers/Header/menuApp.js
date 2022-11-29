@@ -2,9 +2,9 @@ export const adminMenu = [
     { //quản lý nhân sự
         name: 'menu.admin.manage-user',
         menus: [
-            {
-                name: 'menu.admin.crud', link: '/system/user-manage'
-            },
+            // {
+            //     name: 'menu.admin.crud', link: '/system/user-manage'
+            // },
             {
                 name: 'menu.admin.crud-redux', link: '/system/user-redux'
                 // subMenus: [
@@ -18,6 +18,12 @@ export const adminMenu = [
     { //quản lý lương
         name: 'menu.admin.salary',
         menus: [
+            {
+                name: 'menu.admin.manage-salary-year', link: '/system/manage-salary-year'
+            },
+            {
+                name: 'menu.admin.manage-salary-month', link: '/system/manage-salary-month'
+            },
             {
                 name: 'menu.admin.manage-salary', link: '/system/manage-salary'
             },
@@ -49,6 +55,12 @@ export const staffMenu = [
     { //quản lý lương
         name: 'menu.staff.salary',
         menus: [
+            {
+                name: 'menu.staff.manage-salary-year', link: '/system/manage-salary-year'
+            },
+            {
+                name: 'menu.staff.manage-salary-month', link: '/system/manage-salary-month'
+            },
             {
                 name: 'menu.staff.manage-salary', link: '/system/manage-salary'
             },

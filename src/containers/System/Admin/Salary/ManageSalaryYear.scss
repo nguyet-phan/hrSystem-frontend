@@ -1,0 +1,55 @@
+.manage-salary-year {
+    background-image: url("../../../../assets/images/bg-profile.jpg");
+    height: 100vh;
+
+    .container-fluid {
+    
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        padding-bottom: 15px;
+        width: 98%;
+        height: calc(100vh - 20px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        z-index: 0;
+
+
+    }
+    .title {
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+
+    .total-salary-year{
+
+        .month-table {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            background-color: white;
+        }
+        
+        .month-table td,
+        .month-table th {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+        
+        .month-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .month-table tr:hover {
+            background-color: #ddd;
+        }
+        
+        .month-table th {
+            padding-top: 10px;
+            padding-bottom: 10px;
+            text-align: left;
+            background-color: rgb(206, 206, 206);
+            color: #000;
+        }
+    }
+}

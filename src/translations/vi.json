@@ -6,20 +6,24 @@
         "admin": {
             "manage-user": "Tài khoản",
             "crud": "CRUD user",
-            "crud-redux": "CRUD redux",
+            "crud-redux": "Quản lý tài khoản",
             "profile": "Hồ sơ",
             "user-profile": "Thông tin cá nhân",
             "event": "Sự kiện",
             "manage-event": "Quản lý sự kiện",
             "calender": "Lịch",
             "salary": "Lương",
-            "manage-salary": "Quản lý lương"
+            "manage-salary-year": "Bảng lương năm",
+            "manage-salary-month": "Bảng lương tháng",
+            "manage-salary": "Bảng lương chi tiết"
         },
         "staff": {
             "event": "Sự kiện",
             "calender": "Lịch",
             "salary": "Lương",
-            "manage-salary": "Bảng lương"
+            "manage-salary-year": "Bảng lương năm",
+            "manage-salary-month": "Bảng lương tháng",
+            "manage-salary": "Bảng lương chi tiết"
         }
     },
     "manage-user": {
@@ -73,10 +77,11 @@
         "onsite-place": "Địa điểm",
         "start-day": "Từ ngày",
         "end-day": "Đến ngày",
-        "overtime-salary": "Lương làm thêm giờ",
+        "overtime-salary": "Lương overtime",
         "overtime-hours": "Số giờ làm thêm",
+        "total-salary-title": "Bảng lương tháng ",
         "total-salary": "Tổng lương ",
-        "save": "Lưu",
+        "save": "Lưu bảng lương",
         "edit": "Sửa",
         "actions": "Hành động"
     }

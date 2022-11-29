@@ -227,9 +227,7 @@ class ManageSalary extends Component {
     }
 
     render() {
-        console.log('check salary state: ', this.state);
-
-        // console.log('check props salary:', this.props);
+        // console.log('check salary state: ', this.state);
         let arrMonth = [];
         for (let i = 0; i < 5; i++) {
             let object = {};
@@ -246,7 +244,14 @@ class ManageSalary extends Component {
                 <div className='container-fluid'>
                     <div className='title'>
                         <FormattedMessage id='manage-salary.title' />
+
                     </div>
+                    <button className='btn btn-warning my-3 btn-save'
+                        onClick={() => this.handleSaveDetailSalary()}
+                    >
+                        <FormattedMessage id='manage-salary.save' />
+
+                    </button>
 
                     <div className='infor'>
                         <div className='select-staff'>
@@ -399,49 +404,8 @@ class ManageSalary extends Component {
 
                         </div>
                     </div>
-                    <hr></hr>
 
-                    <div className='total-salary'>
-                        <div className='title-detail'>
-                            <FormattedMessage id='manage-salary.total-salary' />
-                            {this.state.selectedMonth.value}
-                        </div>
-                        <table className='detail-salary'>
-                            <thead>
-                                <tr>
-                                    <th><FormattedMessage id='manage-salary.staff' /></th>
-                                    <th><FormattedMessage id='manage-salary.basic-salary' /></th>
-                                    <th><FormattedMessage id='manage-salary.bonus-salary' /></th>
-                                    <th><FormattedMessage id='manage-salary.project-salary' /></th>
-                                    <th><FormattedMessage id='manage-salary.onsite-salary' /></th>
-                                    <th><FormattedMessage id='manage-salary.overtime-salary' /></th>
-                                    <th><FormattedMessage id='manage-salary.deduction-salary' /></th>
-                                    <th><FormattedMessage id='manage-salary.total-salary' /></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Phan Nguyệt</td>
-                                    <td>5000000</td>
-                                    <td>500000</td>
-                                    <td>200000</td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
 
-                            </tbody>
-                        </table>
-                    </div>
-                    <hr></hr>
-
-                    <button className='btn btn-warning m-3'
-                        onClick={() => this.handleSaveDetailSalary()}
-                    >
-                        <FormattedMessage id='manage-user.save' />
-
-                    </button>
                 </div>
             </div>
         );

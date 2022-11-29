@@ -25,14 +25,13 @@ class Profile extends Component {
     }
 
     render() {
-        // console.log('check props: ', this.props.userInfo);
         let { language, userInfo } = this.props;
-        console.log('check user id: ', this.props)
+        // console.log('check user id: ', this.props)
         let imageBase64 = '';
         if (userInfo.image) {
             imageBase64 = new Buffer(userInfo.image, 'base64').toString('binary');
         }
-        console.log('check imageBase64: ', imageBase64);
+        // console.log('check imageBase64: ', imageBase64);
 
         return (
             <div className='user-info '>
@@ -163,7 +162,6 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        // fetchUserRedux: () => dispatch(actions.fetchAllUserStart()),
     };
 };
 

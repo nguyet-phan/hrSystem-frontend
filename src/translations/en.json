@@ -6,20 +6,24 @@
         "admin": {
             "manage-user": "Users",
             "crud": "CRUD user",
-            "crud-redux": "CRUD redux",
+            "crud-redux": "Manage users",
             "profile": "Profile",
             "user-profile": "User's profile",
             "event": "Events",
             "calender": "Calender",
             "manage-event": "Manage Events",
             "salary": "Salary",
-            "manage-salary": "Manage Salary"
+            "manage-salary-year": "Payroll of the year",
+            "manage-salary-month": "Payroll of the month",
+            "manage-salary": "Detail Salary"
         },
         "staff": {
             "event": "Events",
             "calender": "Calender",
             "salary": "Salary",
-            "manage-salary": "Payroll"
+            "manage-salary-year": "Payroll of the year",
+            "manage-salary-month": "Payroll of the month",
+            "manage-salary": "Detail Salary"
         }
     },
     "manage-user": {
@@ -75,8 +79,9 @@
         "end-day": "End day",
         "overtime-salary": "Overtime salaries",
         "overtime-hours": "Overtime hours",
+        "total-salary-title": "Payroll of the month",
         "total-salary": "Total salaries ",
-        "save": "Save",
+        "save": "Save payroll information",
         "edit": "Edit",
         "actions": "Actions"
     }
