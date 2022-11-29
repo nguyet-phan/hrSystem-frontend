@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import './Profile.scss';
 import * as actions from "../../../../store/actions";
 import { LANGUAGES } from '../../../../utils';
-import avatar from '../../../../assets/images/user.svg';
-import { getAllUsers } from '../../../../services/userService';
+import avatar from '../../../../assets/images/user.jpg';
+import camera from '../../../../assets/images/rotate.png';
 
 class Profile extends Component {
 
@@ -20,8 +20,7 @@ class Profile extends Component {
 
     }
 
-    async componentDidUpdate(prevProps, prevState, snapshot) {
-        // imageBase64 = new Buffer(user.image, 'base64').toString('binary');
+    componentDidUpdate(prevProps, prevState, snapshot) {
 
     }
 
@@ -34,15 +33,23 @@ class Profile extends Component {
             imageBase64 = new Buffer(userInfo.image, 'base64').toString('binary');
         }
         console.log('check imageBase64: ', imageBase64);
+
         return (
             <div className='user-info '>
-                <div className='container'>
+                <div className='container' >
                     <div className='row d-flex justify-content-center'>
                         <div className='col-md-10 mt-5 pt-5'>
                             <div className='row z-depth-3'>
                                 <div className='col-sm-4 bg-info rounded-left'>
-                                    <div className='card-block text-center text-white'>
-                                        <i className='fas fa-user-tie fa-7x mt-5'></i>
+                                    <div className='card-block text-center text-white'  >
+                                        <div className='avatarUser' >
+                                            {(imageBase64)
+                                                ? <img className='avatar mt-5' src={imageBase64} alt="avatar" />
+                                                : <img className='avatar mt-5' src={avatar} alt="avatar" />
+                                            }
+                                            <img className='icon-edit' src={camera} alt="Change avatar" />
+                                        </div>
+
 
                                         <h2 className='font-weight-bold mt-4'>
                                             {userInfo && userInfo.firstName ? userInfo.firstName : ''}
@@ -51,7 +58,7 @@ class Profile extends Component {
                                             {language === LANGUAGES.VI ? userInfo.positionData.valueVi : userInfo.positionData.valueEn}
 
                                         </h4>
-                                        <i className='far fa-edit fa-2x mb-4'></i>
+
                                     </div>
                                 </div>
                                 <div className='col-sm-8 bg-white rounded-right'>
