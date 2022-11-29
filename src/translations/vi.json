@@ -4,11 +4,11 @@
     },
     "menu": {
         "admin": {
-            "manage-user": "Người dùng",
+            "manage-user": "Tài khoản",
             "crud": "CRUD user",
             "crud-redux": "CRUD redux",
-            "department": "Phòng ban",
-            "manage-department": "Quản lý phòng ban",
+            "profile": "Hồ sơ",
+            "user-profile": "Thông tin cá nhân",
             "event": "Sự kiện",
             "manage-event": "Quản lý sự kiện",
             "calender": "Lịch",
@@ -34,14 +34,16 @@
         "phone-number": "Số điện thoại",
         "address": "Địa chỉ",
         "gender": "Giới tính",
-        "position": "Chức danh",
+        "position": "Chức vụ",
         "role": "Vai trò",
         "image": "Ảnh đại diện",
         "save": "Lưu",
         "edit": "Sửa",
         "cancel": "Hủy",
         "actions": "Hành động",
-        "upload": "Tải ảnh lên"
+        "upload": "Tải ảnh lên",
+        "profile": "Thông tin tài khoản",
+        "info-position": "Thông tin chức vụ"
     },
     "manage-event": {
         "title": "Quản lý sự kiện",

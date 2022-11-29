@@ -15,11 +15,11 @@ export const adminMenu = [
 
         ]
     },
-    { //quản lý phòng ban
-        name: 'menu.admin.department',
+    { //quản lý lương
+        name: 'menu.admin.salary',
         menus: [
             {
-                name: 'menu.admin.manage-department', link: '/system/manage-department'
+                name: 'menu.admin.manage-salary', link: '/system/manage-salary'
             },
         ]
     },
@@ -34,17 +34,26 @@ export const adminMenu = [
             },
         ]
     },
-    { //quản lý lương
-        name: 'menu.admin.salary',
+
+    { //thông tin tài khoản
+        name: 'menu.admin.profile',
         menus: [
             {
-                name: 'menu.admin.manage-salary', link: '/system/manage-salary'
+                name: 'menu.admin.user-profile', link: '/system/user-profile'
             },
         ]
     },
 ];
 
 export const staffMenu = [
+    { //quản lý lương
+        name: 'menu.staff.salary',
+        menus: [
+            {
+                name: 'menu.staff.manage-salary', link: '/system/manage-salary'
+            },
+        ]
+    },
 
     { //quản lý sự kiện
         name: 'menu.staff.event',
@@ -54,11 +63,12 @@ export const staffMenu = [
             },
         ]
     },
-    { //quản lý lương
-        name: 'menu.staff.salary',
+
+    { //thông tin tài khoản
+        name: 'menu.admin.profile',
         menus: [
             {
-                name: 'menu.staff.manage-salary', link: '/system/manage-salary'
+                name: 'menu.admin.user-profile', link: '/system/user-profile'
             },
         ]
     },

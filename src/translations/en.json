@@ -4,11 +4,11 @@
     },
     "menu": {
         "admin": {
-            "manage-user": "Users System",
+            "manage-user": "Users",
             "crud": "CRUD user",
             "crud-redux": "CRUD redux",
-            "department": "Departments",
-            "manage-department": "Manage Departments",
+            "profile": "Profile",
+            "user-profile": "User's profile",
             "event": "Events",
             "calender": "Calender",
             "manage-event": "Manage Events",
@@ -41,7 +41,9 @@
         "edit": "Edit user",
         "cancel": "Cancel",
         "actions": "Actions",
-        "upload": "Upload"
+        "upload": "Upload",
+        "profile": "Account information",
+        "info-position": "Position information"
     },
     "manage-event": {
         "title": "Manage Events",
