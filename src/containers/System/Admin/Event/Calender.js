@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FormattedMessage } from 'react-intl';
 import { connect } from 'react-redux';
-import './ManageEvent.scss';
+import './Calender.scss';
 import * as actions from "../../../../store/actions";
 import { LANGUAGES, dateFormat } from '../../../../utils';
 
@@ -59,14 +59,15 @@ class ManageEvent extends Component {
         // console.log('check arrEvents: ', arrEvents);
 
         return (
-            <div className='calender-container container' style={{ marginTop: '60px' }}>
+            <div className='calender-container '>
 
-                <Calendar localizer={localizer}
-                    events={arrEvents}
-                    startAccessor="start" endAccessor="end"
-                    style={{ height: 500, marginTop: "40px" }}
-                />
-
+                <div className='container-fluid calender-views'>
+                    <Calendar localizer={localizer}
+                        events={arrEvents}
+                        startAccessor="start" endAccessor="end"
+                        style={{ height: 500, marginTop: "40px" }}
+                    />
+                </div>
             </div>
         );
     }

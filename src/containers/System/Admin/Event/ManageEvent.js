@@ -104,58 +104,62 @@ class ManageEvent extends Component {
     render() {
         let { eventName, startDay, endDay } = this.state;
         return (
-            <div className='manage-event-container container' style={{ marginTop: '60px' }}>
-                <div className='title'>
-                    <FormattedMessage id='manage-event.title' />
+            <div className='manage-event-container'>
+
+
+                <div className=' container-fluid'>
+                    <div className='title'>
+                        <FormattedMessage id='manage-event.title' />
+                    </div>
+
+                    <div className='form-manage-event form-group'>
+                        <div className='title-event '>
+                            <label>
+                                <FormattedMessage id='manage-event.event-name' />
+                            </label>
+                            <input className='form-control' type='text'
+                                value={eventName}
+                                onChange={(event) => this.onChangeInput(event, 'eventName')}
+                            />
+                        </div>
+                        <div className='start-date'>
+                            <label className='title-detail'>
+                                <FormattedMessage id='manage-event.start-day' />
+                            </label>
+                            <DatePicker className='form-control'
+                                onChange={this.onChangeStartDay}
+                                value={this.state.startDay}
+                            // minDate={new Date()}
+                            />
+                        </div>
+                        <div className='end-date'>
+                            <label className='title-detail'>
+                                <FormattedMessage id='manage-event.end-day' />
+                            </label>
+                            <DatePicker className='form-control'
+                                onChange={this.onChangeEndDay}
+                                value={this.state.endDay}
+                                minDate={new Date(this.state.startDay)}
+                            />
+                        </div>
+                        <button className={this.state.action === CRUD_ACTIONS.EDIT ? 'btn btn-warning' : 'btn btn-primary'}
+                            onClick={() => this.handleSaveEvent()}
+                        >
+                            {this.state.action === CRUD_ACTIONS.EDIT ?
+                                <FormattedMessage id='manage-event.edit' /> :
+                                <FormattedMessage id='manage-event.save' />
+                            }
+
+                        </button>
+                    </div>
+
+                    <hr></hr>
+
+                    <TableManageEvent
+                        handleEditEventFromParentKey={this.handleEditEventFromParent}
+                        action={this.state.action}
+                    />
                 </div>
-
-                <div className='form-manage-event form-group'>
-                    <div className='title-event '>
-                        <label>
-                            <FormattedMessage id='manage-event.event-name' />
-                        </label>
-                        <input className='form-control' type='text'
-                            value={eventName}
-                            onChange={(event) => this.onChangeInput(event, 'eventName')}
-                        />
-                    </div>
-                    <div className='start-date'>
-                        <label className='title-detail'>
-                            <FormattedMessage id='manage-event.start-day' />
-                        </label>
-                        <DatePicker className='form-control'
-                            onChange={this.onChangeStartDay}
-                            value={this.state.startDay}
-                        // minDate={new Date()}
-                        />
-                    </div>
-                    <div className='end-date'>
-                        <label className='title-detail'>
-                            <FormattedMessage id='manage-event.end-day' />
-                        </label>
-                        <DatePicker className='form-control'
-                            onChange={this.onChangeEndDay}
-                            value={this.state.endDay}
-                            minDate={new Date(this.state.startDay)}
-                        />
-                    </div>
-                    <button className={this.state.action === CRUD_ACTIONS.EDIT ? 'btn btn-warning' : 'btn btn-primary'}
-                        onClick={() => this.handleSaveEvent()}
-                    >
-                        {this.state.action === CRUD_ACTIONS.EDIT ?
-                            <FormattedMessage id='manage-event.edit' /> :
-                            <FormattedMessage id='manage-event.save' />
-                        }
-
-                    </button>
-                </div>
-
-                <hr></hr>
-
-                <TableManageEvent
-                    handleEditEventFromParentKey={this.handleEditEventFromParent}
-                    action={this.state.action}
-                />
             </div>
         );
     }

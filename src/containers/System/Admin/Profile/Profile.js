@@ -5,6 +5,7 @@ import './Profile.scss';
 import * as actions from "../../../../store/actions";
 import { LANGUAGES } from '../../../../utils';
 import avatar from '../../../../assets/images/user.svg';
+import { getAllUsers } from '../../../../services/userService';
 
 class Profile extends Component {
 
@@ -19,13 +20,20 @@ class Profile extends Component {
 
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
+    async componentDidUpdate(prevProps, prevState, snapshot) {
+        // imageBase64 = new Buffer(user.image, 'base64').toString('binary');
 
     }
 
     render() {
         // console.log('check props: ', this.props.userInfo);
         let { language, userInfo } = this.props;
+        console.log('check user id: ', this.props)
+        let imageBase64 = '';
+        if (userInfo.image) {
+            imageBase64 = new Buffer(userInfo.image, 'base64').toString('binary');
+        }
+        console.log('check imageBase64: ', imageBase64);
         return (
             <div className='user-info '>
                 <div className='container'>
@@ -35,6 +43,7 @@ class Profile extends Component {
                                 <div className='col-sm-4 bg-info rounded-left'>
                                     <div className='card-block text-center text-white'>
                                         <i className='fas fa-user-tie fa-7x mt-5'></i>
+
                                         <h2 className='font-weight-bold mt-4'>
                                             {userInfo && userInfo.firstName ? userInfo.firstName : ''}
                                         </h2>

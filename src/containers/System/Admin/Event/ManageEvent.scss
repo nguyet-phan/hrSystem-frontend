@@ -1,6 +1,22 @@
 .manage-event-container{
+    background-image: url("../../../../assets/images/bg-profile.jpg");
+    height: 100vh;
     
-
+    .container-fluid {
+        
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        padding-bottom: 15px;
+        width: 98%;
+        height: calc(100vh - 20px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        z-index: 0;
+        .title {
+            margin-top: 40px;
+        }
+    }
     .form-manage-event {
         position: relative;
         display: flex;

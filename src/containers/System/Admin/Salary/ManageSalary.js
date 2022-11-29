@@ -241,205 +241,208 @@ class ManageSalary extends Component {
         }
 
         return (
-            <div className='manage-salary-container container'>
-                <div className='title'>
-                    <FormattedMessage id='manage-salary.title' />
-                </div>
+            <div className='manage-salary-container'>
 
-                <div className='infor'>
-                    <div className='select-staff'>
-                        <div className='title-detail'><FormattedMessage id='manage-salary.staff' /></div>
-                        <Select
-                            name={'selectedStaff'}
-                            value={this.state.selectedStaff}
-                            onChange={this.handleChangeSelect}
-                            options={this.state.listUsers}
-                            placeholder={<FormattedMessage id='manage-salary.select-staff' />}
-                        />
+                <div className='container-fluid'>
+                    <div className='title'>
+                        <FormattedMessage id='manage-salary.title' />
                     </div>
 
-                    <div className='month-salary'>
-                        <div className='title-detail'><FormattedMessage id='manage-salary.month' /></div>
-                        <Select
-                            name={'selectedMonth'}
-                            value={this.state.selectedMonth}
-                            onChange={this.handleChangeSelect}
-                            options={arrMonth}
-                            placeholder={<FormattedMessage id='manage-salary.select-month' />}
-                        />
-                    </div>
-                </div>
-                <hr></hr>
+                    <div className='infor'>
+                        <div className='select-staff'>
+                            <div className='title-detail'><FormattedMessage id='manage-salary.staff' /></div>
+                            <Select
+                                name={'selectedStaff'}
+                                value={this.state.selectedStaff}
+                                onChange={this.handleChangeSelect}
+                                options={this.state.listUsers}
+                                placeholder={<FormattedMessage id='manage-salary.select-staff' />}
+                            />
+                        </div>
 
-                <div className='basic-deduction'>
-                    <div className='basic-salary'>
-                        <div className='title-detail'><FormattedMessage id='manage-salary.basic-salary' /></div>
-                        <div className='basic-salary-detail'>
-                            <label> <FormattedMessage id='manage-salary.money' /> (VND)</label>
-                            <input className='form-control' type="text" placeholder="0"
-                                value={this.state.basicSalary}
-                                onChange={(event) => { this.onChangeInput(event, 'basicSalary') }}
+                        <div className='month-salary'>
+                            <div className='title-detail'><FormattedMessage id='manage-salary.month' /></div>
+                            <Select
+                                name={'selectedMonth'}
+                                value={this.state.selectedMonth}
+                                onChange={this.handleChangeSelect}
+                                options={arrMonth}
+                                placeholder={<FormattedMessage id='manage-salary.select-month' />}
                             />
                         </div>
                     </div>
-                    <div className='deduction-salary'>
-                        <div className='title-detail'><FormattedMessage id='manage-salary.deduction-salary' /></div>
-                        <div className='deduction-salary-detail'>
-                            <label><FormattedMessage id='manage-salary.deduction-days' /></label>
-                            <input className='form-control' type="text" placeholder="0"
-                                value={this.state.deductionSalary}
-                                onChange={(event) => { this.onChangeInput(event, 'deductionSalary') }}
-                            />
-                        </div>
-                    </div>
-                </div>
+                    <hr></hr>
 
-                <div className='bonus-project'>
-                    <div className='bonus-salary form-group'>
-                        <div className='title-detail'>
-                            <FormattedMessage id='manage-salary.bonus-salary' />
-                        </div>
-
-                        <div className='bonus-salary-detail'>
-                            <div className='left'>
-                                <label> <FormattedMessage id='manage-salary.reason' /></label>
-                                <input className='form-control' type="text"
-                                    value={this.state.reason}
-                                    onChange={(event) => { this.onChangeInput(event, 'reason') }}
-                                />
-                            </div>
-                            <div className='right'>
-                                <label> <FormattedMessage id='manage-salary.money' />(VND)</label>
+                    <div className='basic-deduction'>
+                        <div className='basic-salary'>
+                            <div className='title-detail'><FormattedMessage id='manage-salary.basic-salary' /></div>
+                            <div className='basic-salary-detail'>
+                                <label> <FormattedMessage id='manage-salary.money' /> (VND)</label>
                                 <input className='form-control' type="text" placeholder="0"
-                                    value={this.state.bonusSalary}
-                                    onChange={(event) => { this.onChangeInput(event, 'bonusSalary') }}
+                                    value={this.state.basicSalary}
+                                    onChange={(event) => { this.onChangeInput(event, 'basicSalary') }}
                                 />
                             </div>
                         </div>
-
-                    </div>
-
-                    <div className='project-salary form-group'>
-                        <div className='title-detail'>
-                            <FormattedMessage id='manage-salary.project-salary' />
-                        </div>
-
-                        <div className='project-salary-detail'>
-                            <div className='left'>
-                                <label><FormattedMessage id='manage-salary.project-name' /></label>
-                                <input className='form-control' type="text"
-                                    value={this.state.projectName}
-                                    onChange={(event) => { this.onChangeInput(event, 'projectName') }}
-                                />
-                            </div>
-                            <div className='right'>
-                                <label> <FormattedMessage id='manage-salary.money' />(VND)</label>
+                        <div className='deduction-salary'>
+                            <div className='title-detail'><FormattedMessage id='manage-salary.deduction-salary' /></div>
+                            <div className='deduction-salary-detail'>
+                                <label><FormattedMessage id='manage-salary.deduction-days' /></label>
                                 <input className='form-control' type="text" placeholder="0"
-                                    value={this.state.projectSalary}
-                                    onChange={(event) => { this.onChangeInput(event, 'projectSalary') }}
+                                    value={this.state.deductionSalary}
+                                    onChange={(event) => { this.onChangeInput(event, 'deductionSalary') }}
                                 />
                             </div>
+                        </div>
+                    </div>
+
+                    <div className='bonus-project'>
+                        <div className='bonus-salary form-group'>
+                            <div className='title-detail'>
+                                <FormattedMessage id='manage-salary.bonus-salary' />
+                            </div>
+
+                            <div className='bonus-salary-detail'>
+                                <div className='left'>
+                                    <label> <FormattedMessage id='manage-salary.reason' /></label>
+                                    <input className='form-control' type="text"
+                                        value={this.state.reason}
+                                        onChange={(event) => { this.onChangeInput(event, 'reason') }}
+                                    />
+                                </div>
+                                <div className='right'>
+                                    <label> <FormattedMessage id='manage-salary.money' />(VND)</label>
+                                    <input className='form-control' type="text" placeholder="0"
+                                        value={this.state.bonusSalary}
+                                        onChange={(event) => { this.onChangeInput(event, 'bonusSalary') }}
+                                    />
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div className='project-salary form-group'>
+                            <div className='title-detail'>
+                                <FormattedMessage id='manage-salary.project-salary' />
+                            </div>
+
+                            <div className='project-salary-detail'>
+                                <div className='left'>
+                                    <label><FormattedMessage id='manage-salary.project-name' /></label>
+                                    <input className='form-control' type="text"
+                                        value={this.state.projectName}
+                                        onChange={(event) => { this.onChangeInput(event, 'projectName') }}
+                                    />
+                                </div>
+                                <div className='right'>
+                                    <label> <FormattedMessage id='manage-salary.money' />(VND)</label>
+                                    <input className='form-control' type="text" placeholder="0"
+                                        value={this.state.projectSalary}
+                                        onChange={(event) => { this.onChangeInput(event, 'projectSalary') }}
+                                    />
+                                </div>
+                            </div>
+
                         </div>
 
                     </div>
 
-                </div>
+                    <div className='onsite-overtime'>
 
-                <div className='onsite-overtime'>
+                        <div className='onsite-salary form-group'>
+                            <div className='title-detail'>
+                                <FormattedMessage id='manage-salary.onsite-salary' />
+                            </div>
 
-                    <div className='onsite-salary form-group'>
-                        <div className='title-detail'>
-                            <FormattedMessage id='manage-salary.onsite-salary' />
+                            <div className='onsite-salary-detail'>
+                                <div className='left'>
+                                    <label><FormattedMessage id='manage-salary.onsite-place' /></label>
+                                    <input className='form-control' type="text"
+                                        value={this.state.onsitePlace}
+                                        onChange={(event) => { this.onChangeInput(event, 'onsitePlace') }}
+                                    />
+                                </div>
+                                <div className='middle'>
+                                    <label><FormattedMessage id='manage-salary.start-day' /></label>
+                                    <DatePicker className='form-control'
+                                        onChange={this.onChangeStartDay}
+                                        value={this.state.startDay}
+                                    // minDate={new Date()}
+                                    />
+                                </div>
+                                <div className='right'>
+                                    <label><FormattedMessage id='manage-salary.end-day' /></label>
+                                    <DatePicker className='form-control'
+                                        onChange={this.onChangeEndDay}
+                                        value={this.state.endDay}
+                                    // minDate={new Date(this.state.startDay)}
+                                    />
+                                </div>
+                            </div>
+
                         </div>
 
-                        <div className='onsite-salary-detail'>
-                            <div className='left'>
-                                <label><FormattedMessage id='manage-salary.onsite-place' /></label>
-                                <input className='form-control' type="text"
-                                    value={this.state.onsitePlace}
-                                    onChange={(event) => { this.onChangeInput(event, 'onsitePlace') }}
-                                />
-                            </div>
-                            <div className='middle'>
-                                <label><FormattedMessage id='manage-salary.start-day' /></label>
-                                <DatePicker className='form-control'
-                                    onChange={this.onChangeStartDay}
-                                    value={this.state.startDay}
-                                // minDate={new Date()}
-                                />
-                            </div>
-                            <div className='right'>
-                                <label><FormattedMessage id='manage-salary.end-day' /></label>
-                                <DatePicker className='form-control'
-                                    onChange={this.onChangeEndDay}
-                                    value={this.state.endDay}
-                                // minDate={new Date(this.state.startDay)}
-                                />
-                            </div>
-                        </div>
-
-                    </div>
-
-                    <div className='overtime-salary form-group'>
-                        <div className='title-detail'>
-                            <FormattedMessage id='manage-salary.overtime-salary' />
-                            {/* <button className='btn-add'>
+                        <div className='overtime-salary form-group'>
+                            <div className='title-detail'>
+                                <FormattedMessage id='manage-salary.overtime-salary' />
+                                {/* <button className='btn-add'>
                                 <i className='fas fa-plus'></i>
                             </button> */}
+                            </div>
+                            <div className='overtime-salary-detail'>
+                                <label> <FormattedMessage id='manage-salary.overtime-hours' /></label>
+                                <input className='form-control' type="text" placeholder="0"
+                                    value={this.state.overtimeHours}
+                                    onChange={(event) => { this.onChangeInput(event, 'overtimeHours') }}
+                                />
+                            </div>
+
                         </div>
-                        <div className='overtime-salary-detail'>
-                            <label> <FormattedMessage id='manage-salary.overtime-hours' /></label>
-                            <input className='form-control' type="text" placeholder="0"
-                                value={this.state.overtimeHours}
-                                onChange={(event) => { this.onChangeInput(event, 'overtimeHours') }}
-                            />
+                    </div>
+                    <hr></hr>
+
+                    <div className='total-salary'>
+                        <div className='title-detail'>
+                            <FormattedMessage id='manage-salary.total-salary' />
+                            {this.state.selectedMonth.value}
                         </div>
+                        <table className='detail-salary'>
+                            <thead>
+                                <tr>
+                                    <th><FormattedMessage id='manage-salary.staff' /></th>
+                                    <th><FormattedMessage id='manage-salary.basic-salary' /></th>
+                                    <th><FormattedMessage id='manage-salary.bonus-salary' /></th>
+                                    <th><FormattedMessage id='manage-salary.project-salary' /></th>
+                                    <th><FormattedMessage id='manage-salary.onsite-salary' /></th>
+                                    <th><FormattedMessage id='manage-salary.overtime-salary' /></th>
+                                    <th><FormattedMessage id='manage-salary.deduction-salary' /></th>
+                                    <th><FormattedMessage id='manage-salary.total-salary' /></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Phan Nguyệt</td>
+                                    <td>5000000</td>
+                                    <td>500000</td>
+                                    <td>200000</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
 
+                            </tbody>
+                        </table>
                     </div>
+                    <hr></hr>
+
+                    <button className='btn btn-warning m-3'
+                        onClick={() => this.handleSaveDetailSalary()}
+                    >
+                        <FormattedMessage id='manage-user.save' />
+
+                    </button>
                 </div>
-                <hr></hr>
-
-                <div className='total-salary'>
-                    <div className='title-detail'>
-                        <FormattedMessage id='manage-salary.total-salary' />
-                        {this.state.selectedMonth.value}
-                    </div>
-                    <table className='detail-salary'>
-                        <thead>
-                            <tr>
-                                <th><FormattedMessage id='manage-salary.staff' /></th>
-                                <th><FormattedMessage id='manage-salary.basic-salary' /></th>
-                                <th><FormattedMessage id='manage-salary.bonus-salary' /></th>
-                                <th><FormattedMessage id='manage-salary.project-salary' /></th>
-                                <th><FormattedMessage id='manage-salary.onsite-salary' /></th>
-                                <th><FormattedMessage id='manage-salary.overtime-salary' /></th>
-                                <th><FormattedMessage id='manage-salary.deduction-salary' /></th>
-                                <th><FormattedMessage id='manage-salary.total-salary' /></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Phan Nguyệt</td>
-                                <td>5000000</td>
-                                <td>500000</td>
-                                <td>200000</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-                <hr></hr>
-
-                <button className='btn btn-warning m-3'
-                    onClick={() => this.handleSaveDetailSalary()}
-                >
-                    <FormattedMessage id='manage-user.save' />
-
-                </button>
             </div>
         );
     }

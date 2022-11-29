@@ -1,0 +1,18 @@
+.calender-container{
+    // background: linear-gradient(115deg, #56d8e4 10%, #9f01ea 90%);
+    background-image: url("../../../../assets/images/bg-profile.jpg");
+    height: 100vh;
+    .calender-views{
+        
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        padding-bottom: 15px;
+        width: 98%;
+        height: calc(100vh - 20px);
+        overflow-y: auto;
+        overflow-x: hidden;
+        z-index: 0;
+        }
+        
+}

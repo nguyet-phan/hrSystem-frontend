@@ -245,14 +245,15 @@ class UserRedux extends Component {
 
         // console.log('check state component: ', this.state);
         return (
-            <div className='user-redux-container' style={{ marginTop: '60px' }}>
-                <div className='title mb-3'>
-                    <FormattedMessage id='manage-user.title' />
-                </div>
+            <div className='user-redux'>
 
-                <div className='user-redux-body' >
-                    {/* <div className='container-fluid'> */}
-                    <div className='container'>
+                <div className='user-redux-container container-fluid'>
+                    <div className='title mb-3'>
+                        <FormattedMessage id='manage-user.title' />
+                    </div>
+
+                    <div className='user-redux-body' >
+                        {/* <div className='container-fluid'> */}
                         {isDisplayForm ?
                             <div className='row'>
 
@@ -410,15 +411,16 @@ class UserRedux extends Component {
 
                             />
                         </div>
+                        {/* </div> */}
                     </div>
-                </div>
 
-                {this.state.isOpen === true &&
-                    <Lightbox
-                        mainSrc={this.state.previewImgURL}
-                        onCloseRequest={() => this.setState({ isOpen: false })}
-                    />
-                }
+                    {this.state.isOpen === true &&
+                        <Lightbox
+                            mainSrc={this.state.previewImgURL}
+                            onCloseRequest={() => this.setState({ isOpen: false })}
+                        />
+                    }
+                </div>
             </div>
         )
     }

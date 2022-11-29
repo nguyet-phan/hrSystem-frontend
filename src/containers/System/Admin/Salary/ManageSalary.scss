@@ -1,15 +1,21 @@
 
 .manage-salary-container {
-        // .manage-salary-title {
-        //     text-align: center;
-        //     margin: 15px 0;
-        //     font-size: 20px;
-        //     text-transform: uppercase;
-        //     font-weight: 600;
-        // }
-
-        margin-top: 60px;
-
+        margin-top: 20px;
+        background-image: url("../../../../assets/images/bg-profile.jpg");
+        height: 100vh;
+    
+    .container-fluid {
+        
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        padding-bottom: 15px;
+        width: 98%;
+        height: calc(100vh - 30px);
+        // overflow-y: auto;
+        overflow-x: hidden;
+        z-index: 0;
+    }
         .title {
             margin-bottom: 20px;
         }
