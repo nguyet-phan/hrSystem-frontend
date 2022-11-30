@@ -5,15 +5,18 @@ import './ManageSalaryYear.scss';
 import * as actions from "../../../../store/actions";
 import { LANGUAGES } from '../../../../utils';
 import Select from 'react-select';
-import DatePicker from '../../../../components/Input/DatePicker';
 import moment from 'moment';
+import { getAllSalaryByMonthService }
+    from '../../../../services/userService';
 
 class ManageSalaryYear extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-
+            selectedYear: '',
+            month: '',
+            salaryMonth: []
         }
     }
 
@@ -25,31 +28,80 @@ class ManageSalaryYear extends Component {
 
     }
 
-    render() {
-        let arrYear = [2021, 2022];
-        for (let i = 0; i < 5; i++) {
-            let object = {};
-            object.label = moment(new Date()).add(i, 'months').format('MM/YYYY');
-            // object.value = moment(new Date()).add(i, 'months').startOf('month').valueOf;
-            object.value = moment(new Date()).add(i, 'months').format('MM/YYYY');
+    handleDetailMonth = (event) => {
 
+    }
+
+    handleChangeSelect = async (selectedYear) => {
+        this.setState({
+            selectedYear
+        })
+
+        // --------------Table Salay for admin: await getAllSalaryByMonthService('ALL', monthYear);
+        let arrSalaryMonth = [];
+        for (let i = 0; i < 12; i++) {
+            let object = {};
+            let monthIndex = i + 1;
+            let monthYear = monthIndex + '/' + selectedYear.value;
+            let res = await getAllSalaryByMonthService('ALL', monthYear);
+            let totalSalaryMonth = 0;
+            let listSlary = res.data;
+            // if (res && res.errCode === 0 && res.data) {
+            for (let i = 0; i < listSlary.length; i++) {
+                totalSalaryMonth += listSlary[i].basicSalaries + listSlary[i].projectSalaries
+                    + listSlary[i].bonusSalaries + listSlary[i].onsiteSalaries + listSlary[i].overtimeSalaries
+                    - listSlary[i].deductionSalaries;
+            }
+            object.month = monthIndex;
+            object.totalSalary = totalSalaryMonth
+            arrSalaryMonth.push(object);
+
+            // this.setState({
+            //     salaryMonth: arrSalaryMonth,
+            // })
+            // }
+            // else {
+            //     this.setState({
+            //         salaryMonth: 0,
+            //     })
+            // }
+
+        }
+        // console.log('check totalSalaryMonth: ', arrSalaryMonth);
+
+        this.setState({
+            salaryMonth: arrSalaryMonth,
+        })
+    };
+
+    render() {
+        let arrYear = [];
+        for (let i = 0; i < 2; i++) {
+            let object = {};
+            object.label = moment(new Date()).add(i, 'years').format('YYYY');
+            object.value = moment(new Date()).add(i, 'years').format('YYYY');
             arrYear.push(object);
         }
+
+        let listMonth = this.state.salaryMonth;
+
+        // console.log('check year salary: ', this.state);
+
         return (
             <div className='manage-salary-year '>
                 <div className='container-fluid' >
                     <div className='title'>
-                        Bảng lương năm
+                        <FormattedMessage id='manage-salary.total-salary-year' />
                     </div>
                     <div className='manage-salary-year-body'>
                         <div className='month-salary'>
                             {/* <div className='title-detail'><FormattedMessage id='manage-salary.month' /></div> */}
                             <Select
                                 name={'selectedYear'}
-                                // value={this.state.selectedMonth}
-                                // onChange={this.handleChangeSelect}
+                                value={this.state.selectedYear}
+                                onChange={this.handleChangeSelect}
                                 options={arrYear}
-                                placeholder='Chọn năm'
+                                placeholder={<FormattedMessage id='manage-salary.select-year' />}
                             />
                         </div>
                         <hr></hr>
@@ -59,98 +111,29 @@ class ManageSalaryYear extends Component {
                             <table className='month-table'>
                                 <thead>
                                     <tr>
-                                        <th>STT</th>
-                                        <th>Năm</th>
-                                        <th>Tháng</th>
-                                        <th>Tổng lương</th>
-                                        <th>Hành động</th>
+                                        <th><FormattedMessage id='manage-salary.year' /></th>
+                                        <th><FormattedMessage id='manage-salary.month' /></th>
+                                        <th><FormattedMessage id='manage-salary.total-salary' /></th>
+                                        <th><FormattedMessage id='manage-salary.actions' /></th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>2022</td>
-                                        <td>1</td>
-                                        <td>20000000</td>
-                                        <td>Xem chi tiết</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>2022</td>
-                                        <td>2</td>
-                                        <td>20000000</td>
-                                        <td>Xem chi tiết</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>2022</td>
-                                        <td>3</td>
-                                        <td>20000000</td>
-                                        <td>Xem chi tiết</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>2022</td>
-                                        <td>4</td>
-                                        <td>20000000</td>
-                                        <td>Xem chi tiết</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>2022</td>
-                                        <td>5</td>
-                                        <td>20000000</td>
-                                        <td>Xem chi tiết</td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>2022</td>
-                                        <td>6</td>
-                                        <td>20000000</td>
-                                        <td>Xem chi tiết</td>
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>2022</td>
-                                        <td>7</td>
-                                        <td>20000000</td>
-                                        <td>Xem chi tiết</td>
-                                    </tr>
-                                    <tr>
-                                        <td>8</td>
-                                        <td>2022</td>
-                                        <td>8</td>
-                                        <td>20000000</td>
-                                        <td>Xem chi tiết</td>
-                                    </tr>
-                                    <tr>
-                                        <td>9</td>
-                                        <td>2022</td>
-                                        <td>9</td>
-                                        <td>20000000</td>
-                                        <td>Xem chi tiết</td>
-                                    </tr>
-                                    <tr>
-                                        <td>10</td>
-                                        <td>2022</td>
-                                        <td>10</td>
-                                        <td>20000000</td>
-                                        <td>Xem chi tiết</td>
-                                    </tr>
-                                    <tr>
-                                        <td>11</td>
-                                        <td>2022</td>
-                                        <td>11</td>
-                                        <td>20000000</td>
-                                        <td>Xem chi tiết</td>
-                                    </tr>
-                                    <tr>
-                                        <td>12</td>
-                                        <td>2022</td>
-                                        <td>12</td>
-                                        <td>20000000</td>
-                                        <td>Xem chi tiết</td>
-                                    </tr>
+                                    {listMonth && listMonth.length > 0
+                                        && listMonth.map((item) => {
+                                            return (
+                                                <tr key={item.month}>
+                                                    <td>{this.state.selectedYear.value}</td>
+                                                    <td>{item.month}</td>
+                                                    <td>{item.totalSalary}</td>
+                                                    <td>
+                                                        <button className='btn-edit'
+                                                            onClick={() => this.handleDetailMonth(item)}
+                                                        ><i className='fas fa-pencil-alt'></i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            )
+                                        })}
 
                                 </tbody>
                             </table>
@@ -165,8 +148,8 @@ class ManageSalaryYear extends Component {
 
 const mapStateToProps = state => {
     return {
-        // userInfo: state.user.userInfo,
-        // language: state.app.language,
+        userInfo: state.user.userInfo,
+        language: state.app.language,
     };
 };
 

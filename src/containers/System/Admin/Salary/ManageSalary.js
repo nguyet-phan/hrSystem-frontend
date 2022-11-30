@@ -186,8 +186,8 @@ class ManageSalary extends Component {
             })
         }
 
-        console.log('check getBasicSalaryByIdService resBasic: ', resOnsite);
-        console.log('check getBasicSalaryByIdService basicSalary: ', resOnsite.data.place);
+        // console.log('check getBasicSalaryByIdService resBasic: ', resOnsite);
+        // console.log('check getBasicSalaryByIdService basicSalary: ', resOnsite.data.place);
 
         let resOvertime = await getOvertimeSalaryByIdService(staffId, month);
         if (resOvertime && resOvertime.errCode === 0 && resOvertime.data && resOvertime.data.hour) {

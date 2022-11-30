@@ -34,6 +34,7 @@
         .month-table th {
             border: 1px solid #ddd;
             padding: 10px;
+            text-align: center;
         }
         
         .month-table tr:nth-child(even) {
@@ -47,7 +48,6 @@
         .month-table th {
             padding-top: 10px;
             padding-bottom: 10px;
-            text-align: left;
             background-color: rgb(206, 206, 206);
             color: #000;
         }

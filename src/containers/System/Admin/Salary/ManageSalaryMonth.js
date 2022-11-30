@@ -4,13 +4,18 @@ import { connect } from 'react-redux';
 import './ManageSalaryMonth.scss';
 import * as actions from "../../../../store/actions";
 import { LANGUAGES } from '../../../../utils';
+import Select from 'react-select';
+import moment from 'moment';
+import { getAllSalaryByMonthService }
+    from '../../../../services/userService';
 
 class ManageSalaryMonth extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-
+            selectedMonth: '',
+            salaryMonth: []
         }
     }
 
@@ -22,7 +27,34 @@ class ManageSalaryMonth extends Component {
 
     }
 
+    handleChangeSelect = async (selectedMonth) => {
+        this.setState({
+            selectedMonth
+        })
+
+        // --------------Table Salay for admin: await getAllSalaryByMonthService('ALL', monthYear);
+
+        let res = await getAllSalaryByMonthService('ALL', selectedMonth.value);
+
+        // console.log('check totalSalaryMonth: ', arrSalaryMonth);
+
+        this.setState({
+            salaryMonth: res.data,
+        })
+    };
+
     render() {
+        let arrMonth = [];
+        for (let i = 0; i < 5; i++) {
+            let object = {};
+            object.label = moment(new Date()).add(i, 'months').format('MM/YYYY');
+            object.value = moment(new Date()).add(i, 'months').format('MM/YYYY');
+
+            arrMonth.push(object);
+        }
+
+        let listMonth = this.state.salaryMonth;
+        console.log(listMonth);
         return (
             <div className='manage-salary-month '>
 
@@ -31,11 +63,22 @@ class ManageSalaryMonth extends Component {
                         <FormattedMessage id='manage-salary.total-salary-title' />
                         {/* {this.state.selectedMonth.value} */}
                     </div>
+                    <div className='month-salary'>
+                        {/* <div className='title-detail'><FormattedMessage id='manage-salary.month' /></div> */}
+                        <Select
+                            name={'selectedMonth'}
+                            value={this.state.selectedMonth}
+                            onChange={this.handleChangeSelect}
+                            options={arrMonth}
+                            placeholder={<FormattedMessage id='manage-salary.select-month' />}
+                        />
+                    </div>
+                    <hr></hr>
                     <table className='detail-salary'>
                         <thead>
                             <tr>
                                 <th><FormattedMessage id='manage-salary.staff' /></th>
-                                <th><FormattedMessage id='manage-user.position' /></th>
+                                {/* <th><FormattedMessage id='manage-user.position' /></th> */}
                                 <th><FormattedMessage id='manage-salary.basic-salary' /></th>
                                 <th><FormattedMessage id='manage-salary.bonus-salary' /></th>
                                 <th><FormattedMessage id='manage-salary.project-salary' /></th>
@@ -47,31 +90,31 @@ class ManageSalaryMonth extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Phan Nguyệt</td>
-                                <td>Tester</td>
-                                <td>5000000</td>
-                                <td>500000</td>
-                                <td>200000</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>Xem chi tiết</td>
-                            </tr>
-                            <tr>
-                                <td>Phan Nguyệt</td>
-                                <td>Tester</td>
-                                <td>5000000</td>
-                                <td>500000</td>
-                                <td>200000</td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td>Xem chi tiết</td>
-                            </tr>
+                            {listMonth && listMonth.length > 0
+                                && listMonth.map((item) => {
+                                    return (
+                                        <tr key={item.id}>
+                                            <td>{item.User.lastName + ' ' + item.User.firstName}</td>
+                                            {/* <td></td> */}
+                                            <td>{item.basicSalaries}</td>
+                                            <td>{item.bonusSalaries}</td>
+                                            <td>{item.projectSalaries}</td>
+                                            <td>{item.onsiteSalaries}</td>
+                                            <td>{item.overtimeSalaries}</td>
+                                            <td>{item.deductionSalaries}</td>
+                                            <td>{item.basicSalaries + item.bonusSalaries + item.projectSalaries
+                                                + item.onsiteSalaries + item.overtimeSalaries - item.deductionSalaries}</td>
 
+                                            <td>
+                                                <button className='btn-edit'
+                                                    onClick={() => this.handleDetailMonth(item)}
+                                                ><i className='fas fa-pencil-alt'></i>
+                                                </button>
+                                            </td>
+                                        </tr>
+
+                                    )
+                                })}
                         </tbody>
                     </table>
                 </div>

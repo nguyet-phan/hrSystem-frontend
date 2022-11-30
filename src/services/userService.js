@@ -62,6 +62,11 @@ const getDeductionSalaryByIdService = (staffId, month) => {
     return axios.get(`/api/get-deduction-salary-by-id?staffId=${staffId}&month=${month}`);
 }
 
+const getAllSalaryByMonthService = (staffId, month) => {
+    return axios.get(`/api/get-all-salary-by-month?staffId=${staffId}&month=${month}`);
+}
+
+
 export {
     handleLoginApi, getAllUsers,
     createNewUserService, deleteUserService, editUserService,
@@ -70,5 +75,5 @@ export {
     getBonusSalaryByIdService, getProjectSalaryByIdService,
     getOvertimeSalaryByIdService, getOnsiteSalaryByIdService,
     getDeductionSalaryByIdService,
-
+    getAllSalaryByMonthService
 }
