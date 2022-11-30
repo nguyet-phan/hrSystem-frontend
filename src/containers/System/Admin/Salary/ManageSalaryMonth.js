@@ -32,11 +32,13 @@ class ManageSalaryMonth extends Component {
             selectedMonth
         })
 
-        // --------------Table Salay for admin: await getAllSalaryByMonthService('ALL', monthYear);
-
-        let res = await getAllSalaryByMonthService('ALL', selectedMonth.value);
-
-        // console.log('check totalSalaryMonth: ', arrSalaryMonth);
+        let res;
+        if (this.props.userInfo.roleId === "R1") {
+            res = await getAllSalaryByMonthService('ALL', selectedMonth.value);
+        }
+        if (this.props.userInfo.roleId === "R2" || this.props.userInfo.roleId === "R3") {
+            res = await getAllSalaryByMonthService(this.props.userInfo.id, selectedMonth.value);
+        }
 
         this.setState({
             salaryMonth: res.data,
@@ -45,7 +47,7 @@ class ManageSalaryMonth extends Component {
 
     render() {
         let arrMonth = [];
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 3; i++) {
             let object = {};
             object.label = moment(new Date()).add(i, 'months').format('MM/YYYY');
             object.value = moment(new Date()).add(i, 'months').format('MM/YYYY');
@@ -54,7 +56,7 @@ class ManageSalaryMonth extends Component {
         }
 
         let listMonth = this.state.salaryMonth;
-        console.log(listMonth);
+
         return (
             <div className='manage-salary-month '>
 
@@ -86,7 +88,7 @@ class ManageSalaryMonth extends Component {
                                 <th><FormattedMessage id='manage-salary.overtime-salary' /></th>
                                 <th><FormattedMessage id='manage-salary.deduction-salary' /></th>
                                 <th><FormattedMessage id='manage-salary.total-salary' /></th>
-                                <th><FormattedMessage id='manage-salary.actions' /></th>
+                                {/* <th><FormattedMessage id='manage-salary.actions' /></th> */}
                             </tr>
                         </thead>
                         <tbody>
@@ -105,12 +107,12 @@ class ManageSalaryMonth extends Component {
                                             <td>{item.basicSalaries + item.bonusSalaries + item.projectSalaries
                                                 + item.onsiteSalaries + item.overtimeSalaries - item.deductionSalaries}</td>
 
-                                            <td>
+                                            {/* <td>
                                                 <button className='btn-edit'
                                                     onClick={() => this.handleDetailMonth(item)}
                                                 ><i className='fas fa-pencil-alt'></i>
                                                 </button>
-                                            </td>
+                                            </td> */}
                                         </tr>
 
                                     )
@@ -128,8 +130,8 @@ class ManageSalaryMonth extends Component {
 
 const mapStateToProps = state => {
     return {
-        // userInfo: state.user.userInfo,
-        // language: state.app.language,
+        userInfo: state.user.userInfo,
+        language: state.app.language,
     };
 };
 

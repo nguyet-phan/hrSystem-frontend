@@ -229,13 +229,24 @@ class ManageSalary extends Component {
     render() {
         // console.log('check salary state: ', this.state);
         let arrMonth = [];
-        for (let i = 0; i < 5; i++) {
+        for (let i = 0; i < 3; i++) {
             let object = {};
             object.label = moment(new Date()).add(i, 'months').format('MM/YYYY');
             // object.value = moment(new Date()).add(i, 'months').startOf('month').valueOf;
             object.value = moment(new Date()).add(i, 'months').format('MM/YYYY');
 
             arrMonth.push(object);
+        }
+
+        let userRole = this.props.userInfo.roleId;
+        let listOptions = [];
+        if (userRole === "R1") {
+            listOptions = this.state.listUsers;
+        } else {
+            let object = {};
+            object.label = this.props.userInfo.lastName + this.props.userInfo.firstName;
+            object.value = this.props.userInfo.id
+            listOptions.push(object);
         }
 
         return (
@@ -260,9 +271,12 @@ class ManageSalary extends Component {
                                 name={'selectedStaff'}
                                 value={this.state.selectedStaff}
                                 onChange={this.handleChangeSelect}
-                                options={this.state.listUsers}
+                                options={listOptions}
                                 placeholder={<FormattedMessage id='manage-salary.select-staff' />}
                             />
+
+
+
                         </div>
 
                         <div className='month-salary'>
@@ -286,6 +300,7 @@ class ManageSalary extends Component {
                                 <input className='form-control' type="text" placeholder="0"
                                     value={this.state.basicSalary}
                                     onChange={(event) => { this.onChangeInput(event, 'basicSalary') }}
+                                    disabled={userRole !== 'R1' ? true : false}
                                 />
                             </div>
                         </div>
@@ -296,6 +311,7 @@ class ManageSalary extends Component {
                                 <input className='form-control' type="text" placeholder="0"
                                     value={this.state.deductionSalary}
                                     onChange={(event) => { this.onChangeInput(event, 'deductionSalary') }}
+                                    disabled={userRole !== 'R1' ? true : false}
                                 />
                             </div>
                         </div>
@@ -313,6 +329,7 @@ class ManageSalary extends Component {
                                     <input className='form-control' type="text"
                                         value={this.state.reason}
                                         onChange={(event) => { this.onChangeInput(event, 'reason') }}
+                                        disabled={userRole !== 'R1' ? true : false}
                                     />
                                 </div>
                                 <div className='right'>
@@ -320,6 +337,7 @@ class ManageSalary extends Component {
                                     <input className='form-control' type="text" placeholder="0"
                                         value={this.state.bonusSalary}
                                         onChange={(event) => { this.onChangeInput(event, 'bonusSalary') }}
+                                        disabled={userRole !== 'R1' ? true : false}
                                     />
                                 </div>
                             </div>
@@ -337,6 +355,7 @@ class ManageSalary extends Component {
                                     <input className='form-control' type="text"
                                         value={this.state.projectName}
                                         onChange={(event) => { this.onChangeInput(event, 'projectName') }}
+                                        disabled={userRole !== 'R1' ? true : false}
                                     />
                                 </div>
                                 <div className='right'>
@@ -344,6 +363,7 @@ class ManageSalary extends Component {
                                     <input className='form-control' type="text" placeholder="0"
                                         value={this.state.projectSalary}
                                         onChange={(event) => { this.onChangeInput(event, 'projectSalary') }}
+                                        disabled={userRole !== 'R1' ? true : false}
                                     />
                                 </div>
                             </div>
@@ -417,6 +437,7 @@ const mapStateToProps = state => {
     return {
         listUsers: state.admin.users,
         language: state.app.language,
+        userInfo: state.user.userInfo,
     };
 };
 

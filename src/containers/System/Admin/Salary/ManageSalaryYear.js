@@ -37,13 +37,18 @@ class ManageSalaryYear extends Component {
             selectedYear
         })
 
-        // --------------Table Salay for admin: await getAllSalaryByMonthService('ALL', monthYear);
         let arrSalaryMonth = [];
         for (let i = 0; i < 12; i++) {
             let object = {};
             let monthIndex = i + 1;
             let monthYear = monthIndex + '/' + selectedYear.value;
-            let res = await getAllSalaryByMonthService('ALL', monthYear);
+            let res;
+            if (this.props.userInfo.roleId === "R1") {
+                res = await getAllSalaryByMonthService('ALL', monthYear);
+            }
+            if (this.props.userInfo.roleId === "R2" || this.props.userInfo.roleId === "R3") {
+                res = await getAllSalaryByMonthService(this.props.userInfo.id, monthYear);
+            }
             let totalSalaryMonth = 0;
             let listSlary = res.data;
             // if (res && res.errCode === 0 && res.data) {
@@ -85,8 +90,6 @@ class ManageSalaryYear extends Component {
 
         let listMonth = this.state.salaryMonth;
 
-        // console.log('check year salary: ', this.state);
-
         return (
             <div className='manage-salary-year '>
                 <div className='container-fluid' >
@@ -114,7 +117,7 @@ class ManageSalaryYear extends Component {
                                         <th><FormattedMessage id='manage-salary.year' /></th>
                                         <th><FormattedMessage id='manage-salary.month' /></th>
                                         <th><FormattedMessage id='manage-salary.total-salary' /></th>
-                                        <th><FormattedMessage id='manage-salary.actions' /></th>
+                                        {/* <th><FormattedMessage id='manage-salary.actions' /></th> */}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -125,12 +128,12 @@ class ManageSalaryYear extends Component {
                                                     <td>{this.state.selectedYear.value}</td>
                                                     <td>{item.month}</td>
                                                     <td>{item.totalSalary}</td>
-                                                    <td>
+                                                    {/* <td>
                                                         <button className='btn-edit'
                                                             onClick={() => this.handleDetailMonth(item)}
                                                         ><i className='fas fa-pencil-alt'></i>
                                                         </button>
-                                                    </td>
+                                                    </td> */}
                                                 </tr>
                                             )
                                         })}
