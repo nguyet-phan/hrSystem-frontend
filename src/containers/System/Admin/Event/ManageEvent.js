@@ -66,7 +66,7 @@ class ManageEvent extends Component {
         let { eventName, startDay, endDay } = this.state;
 
         if (!eventName || !startDay || !endDay) {
-            toast.error("Bạn chưa nhập đủ thông tin!");
+            toast.error("Bạn chưa nhập đủ thông tin!/ Missing required information!");
             return
         }
 

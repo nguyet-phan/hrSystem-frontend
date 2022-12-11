@@ -31,6 +31,7 @@ class TableManagerUser extends Component {
 
     handleDeleteUser = (user) => {
         this.props.deleteUserRedux(user.id);
+        // console.log("check deleteUser: ", user.id);
     }
 
     handleEditUser = (user) => {

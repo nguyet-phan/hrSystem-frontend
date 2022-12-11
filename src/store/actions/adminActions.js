@@ -105,7 +105,7 @@ export const createNewUser = (data) => {
         try {
             let res = await createNewUserService(data);
             if (res && res.errCode === 0) {
-                toast.success("Create a new user succeed!")
+                toast.success("Thêm mới người dùng thành công!/ Create a new user succeed!")
                 dispatch(saveUserSuccess());
                 dispatch(fetchAllUserStart());
             } else {
@@ -137,11 +137,11 @@ export const fetchAllUserStart = () => {
                 // dispatch(fetchAllUsersSuccess(res.users.reverse()));//dao nguoc thu tu
                 dispatch(fetchAllUsersSuccess(res.users));
             } else {
-                toast.error("fetchAllUsers Failed!");
+                toast.error("Tải danh sách thất bại!/ Load all users failed!");
                 dispatch(fetchAllUsersFailed());
             }
         } catch (e) {
-            toast.error("fetchAllUsers Failed!");
+            toast.error("Tải danh sách thất bại!/ Load all users failed!");
             dispatch(fetchAllUsersFailed());
             console.log('fetchAllUsersStart error: ', e);
         }
@@ -164,15 +164,15 @@ export const deleteUser = (userId) => {
         try {
             let res = await deleteUserService(userId);
             if (res && res.errCode === 0) {
-                toast.success("Delete the user succeed!");
+                toast.success("Xóa tài khoản thành công!/ Delete the user succeed!");
                 dispatch(deleteUserSuccess());
                 dispatch(fetchAllUserStart());
             } else {
-                toast.error("Delete the user failded!");
+                toast.error("Xóa tài khoản thất bại!/ Delete the user failded!");
                 dispatch(deleteUserFailed());
             }
         } catch (e) {
-            toast.error("Delete the user failded!");
+            toast.error("Xóa tài khoản thất bại!/ Delete the user failded!");
             dispatch(deleteUserFailed());
             console.log('deleteUserFailed error: ', e);
         }
@@ -194,15 +194,15 @@ export const editUser = (data) => {
         try {
             let res = await editUserService(data);
             if (res && res.errCode === 0) {
-                toast.success("Edit the user succeed!");
+                toast.success("Sửa tài khoản thành công!/ Edit the user succeed!");
                 dispatch(editUserSuccess());
                 dispatch(fetchAllUserStart());
             } else {
-                toast.error("Edit the user failded!");
+                toast.error("Sửa tài khoản thất bại!/ Edit the user failded!");
                 dispatch(editUserFailed());
             }
         } catch (e) {
-            toast.error("Edit the user failded!");
+            toast.error("Sửa tài khoản thất bại!/ Edit the user failded!");
             dispatch(editUserFailed());
             console.log('editUserFailed error: ', e);
         }
@@ -230,13 +230,13 @@ export const fetchAllManagersStart = () => {
                     dataManagers: res.data
                 });
             } else {
-                toast.error("fetchAllManagers Failed!");
+                toast.error("Tải danh sách quản lý thất bại!/ fetchAllManagers Failed!");
                 dispatch({
                     type: actionTypes.FETCH_ALL_MANAGERS_FAILDED
                 });
             }
         } catch (e) {
-            toast.error("fetchAllManagers Failed!");
+            toast.error("Tải danh sách quản lý thất bại!/ fetchAllManagers Failed!");
             dispatch({
                 type: actionTypes.FETCH_ALL_MANAGERS_FAILDED
             });
@@ -252,19 +252,19 @@ export const saveBasicSalaries = (data) => {
         try {
             let res = await saveBasicSalaryService(data);
             if (res && res.errCode === 0) {
-                toast.success("Lưu bảng lương thành công!");
+                toast.success("Lưu bảng lương thành công!/ Save the payroll succeed!");
                 dispatch({
                     type: actionTypes.SAVE_BASIC_SALARY_SUCCESS,
                 });
             } else {
                 console.log('SAVE_BASIC_SALARY_FAILDED error: ', res);
-                toast.error("Thiếu thông tin nhân viên/ tháng/ lương cơ bản!");
+                toast.error("Thiếu thông tin nhân viên/ tháng/ lương cơ bản!/ Missing information: employee/month/base salary");
                 dispatch({
                     type: actionTypes.SAVE_BASIC_SALARY_FAILDED
                 });
             }
         } catch (e) {
-            toast.error("SAVE_BASIC_SALARY_FAILDED Failed!");
+            toast.error("Thiếu thông tin nhân viên/ tháng/ lương cơ bản!/ Missing information: employee/month/base salary");
             dispatch({
                 type: actionTypes.SAVE_BASIC_SALARY_FAILDED
             });
@@ -280,20 +280,20 @@ export const createNewEvent = (data) => {
         try {
             let res = await createNewEventService(data);
             if (res && res.errCode === 0) {
-                toast.success("createNewEvent succeed!");
+                toast.success("Thêm sự kiện thành công!/ Create new event succeed!");
                 dispatch({
                     type: actionTypes.CREATE_EVENT_SUCCESS,
                 });
                 dispatch(fetchAllEventStart());
             } else {
                 console.log('CREATE_EVENT_FAILDED error: ', res);
-                toast.error("CREATE_EVENT_FAILDED Failed!");
+                toast.error("Thêm sự kiện thất bại!/ Create new event failed!");
                 dispatch({
                     type: actionTypes.CREATE_EVENT_FAILDED
                 });
             }
         } catch (e) {
-            toast.error("CREATE_EVENT_FAILDED Failed!");
+            toast.error("Thêm sự kiện thất bại!/ Create new event failed!");
             dispatch({
                 type: actionTypes.CREATE_EVENT_FAILDED
             });
@@ -311,11 +311,11 @@ export const fetchAllEventStart = () => {
             if (res && res.errCode === 0) {
                 dispatch(fetchAllEventsSuccess(res.events));
             } else {
-                toast.error("fetch All Events Failed!");
+                toast.error("Tải danh sách sự kiện thất bại!/ Load all events failed!");
                 dispatch(fetchAllEventsFailed());
             }
         } catch (e) {
-            toast.error("fetchAllEvents Failed!");
+            toast.error("Tải danh sách sự kiện thất bại!/ Load all events failed!");
             dispatch(fetchAllEventsFailed());
             console.log('fetchAllEventsStart error: ', e);
         }
@@ -338,15 +338,15 @@ export const deleteEvent = (eventId) => {
         try {
             let res = await deleteEventService(eventId);
             if (res && res.errCode === 0) {
-                toast.success("Delete the event succeed!");
+                toast.success("Xóa sự kiện thành công!/ Delete the event succeed!");
                 dispatch(deleteEventSuccess());
                 dispatch(fetchAllEventStart());
             } else {
-                toast.error("Delete the event failded!");
+                toast.error("Xóa sự kiện thất bại!/ Delete the event failded!");
                 dispatch(deleteEventFailed());
             }
         } catch (e) {
-            toast.error("Delete the event failded!");
+            toast.error("Xóa sự kiện thất bại!/ Delete the event failded!");
             dispatch(deleteEventFailed());
             console.log('deleteEventFailed error: ', e);
         }
@@ -368,15 +368,15 @@ export const editEvent = (data) => {
         try {
             let res = await editEventService(data);
             if (res && res.errCode === 0) {
-                toast.success("Edit the event succeed!");
+                toast.success("Sửa sự kiện thành công!/ Edit the event succeed!");
                 dispatch(editEventSuccess());
                 dispatch(fetchAllEventStart());
             } else {
-                toast.error("Edit the event failded!");
+                toast.error("Sửa sự kiện thất bại!/ Edit the event failded!");
                 dispatch(editEventFailed());
             }
         } catch (e) {
-            toast.error("Edit the event failded!");
+            toast.error("Sửa sự kiện thất bại!/ Edit the event failded!");
             dispatch(editEventFailed());
             console.log('editEventFailed error: ', e);
         }

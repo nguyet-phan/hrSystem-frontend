@@ -75,9 +75,9 @@ class Login extends Component {
             <div className='login-background'>
                 <div className='login-container'>
                     <div className='login-content row'>
-                        <div className='col-12 text-login'>Login Form</div>
+                        <div className='col-12 text-login'>Đăng nhập</div>
                         <div className='col-12 form-group login-input'>
-                            <label>Username:</label>
+                            <label>Email:</label>
                             <input type='text'
                                 className='form-control'
                                 placeholder='Enter your username'
@@ -86,7 +86,7 @@ class Login extends Component {
                             />
                         </div>
                         <div className='col-12 from-group login-input'>
-                            <label>Password:</label>
+                            <label>Mật khẩu:</label>
                             <div className='custom-input-password'>
                                 <input
                                     className='form-control'
@@ -105,17 +105,10 @@ class Login extends Component {
                             {this.state.errMessage}
                         </div>
                         <div className='col-12'>
-                            <button className='btn-login' onClick={() => { this.handleLogin() }}>LOGIN</button>
+                            <button className='btn-login' onClick={() => { this.handleLogin() }}>ĐĂNG NHẬP</button>
                         </div>
-                        <div className='col-12'>
+                        {/* <div className='col-12'>
                             <span className='forgot-password'>Forgot your password?</span>
-                        </div>
-                        {/* <div className='col-12 text-center mt-3'>
-                            <span className='text-other-login'>Or login with</span>
-                        </div>
-                        <div className='col-12 social-login'>
-                            <i className="fab fa-google-plus-g google"></i>
-                            <i className="fab fa-facebook-f facebook"></i>
                         </div> */}
                     </div>
                 </div >

@@ -47,7 +47,8 @@ class ManageSalaryMonth extends Component {
 
     render() {
         let arrMonth = [];
-        for (let i = 0; i < 3; i++) {
+        arrMonth.push({ 'label': '11/2022', 'value': '11/2022' });
+        for (let i = 0; i < 2; i++) {
             let object = {};
             object.label = moment(new Date()).add(i, 'months').format('MM/YYYY');
             object.value = moment(new Date()).add(i, 'months').format('MM/YYYY');

@@ -229,8 +229,10 @@ class ManageSalary extends Component {
     render() {
         // console.log('check salary state: ', this.state);
         let arrMonth = [];
-        for (let i = 0; i < 3; i++) {
+        arrMonth.push({ 'label': '11/2022', 'value': '11/2022' });
+        for (let i = 0; i < 2; i++) {
             let object = {};
+            let monthStart = 11
             object.label = moment(new Date()).add(i, 'months').format('MM/YYYY');
             // object.value = moment(new Date()).add(i, 'months').startOf('month').valueOf;
             object.value = moment(new Date()).add(i, 'months').format('MM/YYYY');
@@ -244,7 +246,7 @@ class ManageSalary extends Component {
             listOptions = this.state.listUsers;
         } else {
             let object = {};
-            object.label = this.props.userInfo.lastName + this.props.userInfo.firstName;
+            object.label = this.props.userInfo.lastName + " " + this.props.userInfo.firstName;
             object.value = this.props.userInfo.id
             listOptions.push(object);
         }

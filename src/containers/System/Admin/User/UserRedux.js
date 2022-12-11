@@ -274,7 +274,7 @@ class UserRedux extends Component {
                                     <input className='form-control' type='password'
                                         value={password}
                                         onChange={(event) => { this.onChangeInput(event, 'password') }}
-                                        disabled={this.state.action === CRUD_ACTIONS.EDIT ? true : false}
+                                    // disabled={this.state.action === CRUD_ACTIONS.EDIT ? true : false}
                                     />
                                 </div>
 
