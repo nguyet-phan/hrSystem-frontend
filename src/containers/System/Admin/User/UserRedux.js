@@ -199,7 +199,7 @@ class UserRedux extends Component {
 
             isDisplayForm: true
         }, () => {
-            console.log('check base64: ', this.state);
+            // console.log('check base64: ', this.state);
         })
     }
 

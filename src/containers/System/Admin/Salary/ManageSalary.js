@@ -8,10 +8,13 @@ import { LANGUAGES, dateFormat } from '../../../../utils';
 import Select from 'react-select';
 import DatePicker from '../../../../components/Input/DatePicker';
 import moment from 'moment';
+import NumberFormat from 'react-number-format';
 import {
     getBasicSalaryByIdService, getDeductionSalaryByIdService, getBonusSalaryByIdService,
-    getProjectSalaryByIdService, getOvertimeSalaryByIdService, getOnsiteSalaryByIdService
+    getProjectSalaryByIdService, getOvertimeSalaryByIdService, getOnsiteSalaryByIdService,
+    confirmSalaryService
 } from '../../../../services/userService';
+import { toast } from 'react-toastify';
 
 class ManageSalary extends Component {
     constructor(props) {
@@ -28,7 +31,9 @@ class ManageSalary extends Component {
             onsitePlace: '',
             startDay: '',
             endDay: '',
-            overtimeHours: ''
+            overtimeHours: '',
+
+            statusId: ''
         }
     }
 
@@ -69,7 +74,6 @@ class ManageSalary extends Component {
             })
         }
 
-
     }
 
     handleSaveDetailSalary = () => {
@@ -88,6 +92,26 @@ class ManageSalary extends Component {
             endDay: this.state.endDay,
             overtimeHours: this.state.overtimeHours
         })
+    }
+
+    handleConfirmSalary = async () => {
+        let dataConfirm = this.state;
+        let res = await confirmSalaryService({
+            staffId: dataConfirm.selectedStaff.value,
+            month: dataConfirm.selectedMonth.value,
+            basicSalary: dataConfirm.basicSalary
+        });
+        if (res && res.errCode === 0) {
+            // toast.success('Xác nhận bảng lương thành công!/ Confirm the payroll succeed!');
+        } else {
+            toast.error(res.errMessage)
+            // toast.error('Xác nhận bảng lương thất bại!/ Confirm the payroll failed!')
+        }
+        this.setState({
+            statusId: 'S2'
+        })
+        // console.log('check confirm salary: ', this.state);
+
     }
 
     handleChangeSelect = async (selectedOption, name) => {
@@ -111,6 +135,7 @@ class ManageSalary extends Component {
         if (resBasic && resBasic.errCode === 0 && resBasic.data && resBasic.data.basicSalaries) {
             this.setState({
                 basicSalary: resBasic.data.basicSalaries,
+                statusId: resBasic.data.statusId
             })
         }
         else {
@@ -227,7 +252,7 @@ class ManageSalary extends Component {
     }
 
     render() {
-        // console.log('check salary state: ', this.state);
+        console.log('check salary state: ', this.state);
         let arrMonth = [];
         arrMonth.push({ 'label': '11/2022', 'value': '11/2022' });
         for (let i = 0; i < 2; i++) {
@@ -259,12 +284,35 @@ class ManageSalary extends Component {
                         <FormattedMessage id='manage-salary.title' />
 
                     </div>
-                    <button className='btn btn-warning my-3 btn-save'
-                        onClick={() => this.handleSaveDetailSalary()}
-                    >
-                        <FormattedMessage id='manage-salary.save' />
+                    {this.state.statusId === 'S2' ?
+                        <button className='btn btn-info my-3 mr-3'
+                        // onClick={() => this.handleConfirmSalary()}
+                        >
+                            {/* <FormattedMessage id='manage-salary.save' /> */}
+                            Bảng lương đã khóa
+                        </button>
 
-                    </button>
+                        :
+
+                        <button className='btn btn-primary my-3 btn-save mr-3'
+                            onClick={() => this.handleSaveDetailSalary()}
+                        >
+                            <FormattedMessage id='manage-salary.save' />
+
+                        </button>
+
+
+                    }
+                    {userRole === 'R1' ?
+                        <button className='btn btn-danger my-3 btn-save'
+                            onClick={() => this.handleConfirmSalary()}
+                        >
+                            <FormattedMessage id='manage-salary.confirm' />
+
+                        </button>
+                        :
+                        ''
+                    }
 
                     <div className='infor'>
                         <div className='select-staff'>
@@ -276,9 +324,6 @@ class ManageSalary extends Component {
                                 options={listOptions}
                                 placeholder={<FormattedMessage id='manage-salary.select-staff' />}
                             />
-
-
-
                         </div>
 
                         <div className='month-salary'>
@@ -302,7 +347,7 @@ class ManageSalary extends Component {
                                 <input className='form-control' type="text" placeholder="0"
                                     value={this.state.basicSalary}
                                     onChange={(event) => { this.onChangeInput(event, 'basicSalary') }}
-                                    disabled={userRole !== 'R1' ? true : false}
+                                    disabled={this.state.statusId === 'S2' || userRole !== 'R1' ? true : false}
                                 />
                             </div>
                         </div>
@@ -313,7 +358,7 @@ class ManageSalary extends Component {
                                 <input className='form-control' type="text" placeholder="0"
                                     value={this.state.deductionSalary}
                                     onChange={(event) => { this.onChangeInput(event, 'deductionSalary') }}
-                                    disabled={userRole !== 'R1' ? true : false}
+                                    disabled={this.state.statusId === 'S2' || userRole !== 'R1' ? true : false}
                                 />
                             </div>
                         </div>
@@ -331,7 +376,7 @@ class ManageSalary extends Component {
                                     <input className='form-control' type="text"
                                         value={this.state.reason}
                                         onChange={(event) => { this.onChangeInput(event, 'reason') }}
-                                        disabled={userRole !== 'R1' ? true : false}
+                                        disabled={this.state.statusId === 'S2' || userRole !== 'R1' ? true : false}
                                     />
                                 </div>
                                 <div className='right'>
@@ -339,7 +384,7 @@ class ManageSalary extends Component {
                                     <input className='form-control' type="text" placeholder="0"
                                         value={this.state.bonusSalary}
                                         onChange={(event) => { this.onChangeInput(event, 'bonusSalary') }}
-                                        disabled={userRole !== 'R1' ? true : false}
+                                        disabled={this.state.statusId === 'S2' || userRole !== 'R1' ? true : false}
                                     />
                                 </div>
                             </div>
@@ -357,7 +402,7 @@ class ManageSalary extends Component {
                                     <input className='form-control' type="text"
                                         value={this.state.projectName}
                                         onChange={(event) => { this.onChangeInput(event, 'projectName') }}
-                                        disabled={userRole !== 'R1' ? true : false}
+                                        disabled={this.state.statusId === 'S2' || userRole !== 'R1' ? true : false}
                                     />
                                 </div>
                                 <div className='right'>
@@ -365,7 +410,7 @@ class ManageSalary extends Component {
                                     <input className='form-control' type="text" placeholder="0"
                                         value={this.state.projectSalary}
                                         onChange={(event) => { this.onChangeInput(event, 'projectSalary') }}
-                                        disabled={userRole !== 'R1' ? true : false}
+                                        disabled={this.state.statusId === 'S2' || userRole !== 'R1' ? true : false}
                                     />
                                 </div>
                             </div>
@@ -387,6 +432,7 @@ class ManageSalary extends Component {
                                     <input className='form-control' type="text"
                                         value={this.state.onsitePlace}
                                         onChange={(event) => { this.onChangeInput(event, 'onsitePlace') }}
+                                        disabled={this.state.statusId === 'S2' ? true : false}
                                     />
                                 </div>
                                 <div className='middle'>
@@ -394,7 +440,8 @@ class ManageSalary extends Component {
                                     <DatePicker className='form-control'
                                         onChange={this.onChangeStartDay}
                                         value={this.state.startDay}
-                                    // minDate={new Date()}
+                                        // minDate={new Date()}
+                                        disabled={this.state.statusId === 'S2' ? true : false}
                                     />
                                 </div>
                                 <div className='right'>
@@ -402,7 +449,8 @@ class ManageSalary extends Component {
                                     <DatePicker className='form-control'
                                         onChange={this.onChangeEndDay}
                                         value={this.state.endDay}
-                                    // minDate={new Date(this.state.startDay)}
+                                        // minDate={new Date(this.state.startDay)}
+                                        disabled={this.state.statusId === 'S2' ? true : false}
                                     />
                                 </div>
                             </div>
@@ -421,6 +469,7 @@ class ManageSalary extends Component {
                                 <input className='form-control' type="text" placeholder="0"
                                     value={this.state.overtimeHours}
                                     onChange={(event) => { this.onChangeInput(event, 'overtimeHours') }}
+                                    disabled={this.state.statusId === 'S2' ? true : false}
                                 />
                             </div>
 

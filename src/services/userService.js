@@ -38,6 +38,10 @@ const saveBasicSalaryService = (data) => {
     return axios.post('/api/save-basic-salary', data);
 }
 
+const confirmSalaryService = (data) => {
+    return axios.post('/api/confirm-salary', data);
+}
+
 const getBasicSalaryByIdService = (staffId, month) => {
     return axios.get(`/api/get-basic-salary-by-id?staffId=${staffId}&month=${month}`);
 }
@@ -75,5 +79,5 @@ export {
     getBonusSalaryByIdService, getProjectSalaryByIdService,
     getOvertimeSalaryByIdService, getOnsiteSalaryByIdService,
     getDeductionSalaryByIdService,
-    getAllSalaryByMonthService
+    getAllSalaryByMonthService, confirmSalaryService
 }

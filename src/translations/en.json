@@ -84,7 +84,9 @@
         "total-salary-year": "Payroll of the year",
         "total-salary-title": "Payroll of the month",
         "total-salary": "Total salaries ",
-        "save": "Save payroll information",
+        "save": "Save the payroll",
+        "confirm": "Confirm",
+        "unconfirm": "Unconfirm",
         "edit": "Edit",
         "actions": "Actions"
     }

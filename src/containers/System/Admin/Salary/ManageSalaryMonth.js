@@ -6,6 +6,7 @@ import * as actions from "../../../../store/actions";
 import { LANGUAGES } from '../../../../utils';
 import Select from 'react-select';
 import moment from 'moment';
+import NumberFormat from 'react-number-format';
 import { getAllSalaryByMonthService }
     from '../../../../services/userService';
 
@@ -99,14 +100,48 @@ class ManageSalaryMonth extends Component {
                                         <tr key={item.id}>
                                             <td>{item.User.lastName + ' ' + item.User.firstName}</td>
                                             {/* <td></td> */}
-                                            <td>{item.basicSalaries}</td>
-                                            <td>{item.bonusSalaries}</td>
-                                            <td>{item.projectSalaries}</td>
-                                            <td>{item.onsiteSalaries}</td>
-                                            <td>{item.overtimeSalaries}</td>
-                                            <td>{item.deductionSalaries}</td>
-                                            <td>{item.basicSalaries + item.bonusSalaries + item.projectSalaries
-                                                + item.onsiteSalaries + item.overtimeSalaries - item.deductionSalaries}</td>
+                                            <td>
+                                                <NumberFormat value={item.basicSalaries}
+                                                    displayType={'text'}
+                                                    thousandSeparator=","
+                                                    suffix="VND"
+                                                />
+                                            </td>
+                                            <td>
+                                                <NumberFormat value={item.bonusSalaries}
+                                                    displayType={'text'}
+                                                    thousandSeparator=","
+                                                    suffix="VND"
+                                                />
+                                            </td>
+                                            <td>
+                                                <NumberFormat value={item.projectSalaries}
+                                                    displayType={'text'}
+                                                    thousandSeparator=","
+                                                    suffix="VND"
+                                                />
+                                            </td>
+                                            <td><NumberFormat value={item.onsiteSalaries}
+                                                displayType={'text'}
+                                                thousandSeparator=","
+                                                suffix="VND"
+                                            /></td>
+                                            <td><NumberFormat value={item.overtimeSalaries}
+                                                displayType={'text'}
+                                                thousandSeparator=","
+                                                suffix="VND"
+                                            /></td>
+                                            <td><NumberFormat value={item.deductionSalaries}
+                                                displayType={'text'}
+                                                thousandSeparator=","
+                                                suffix="VND"
+                                            /></td>
+                                            <td><NumberFormat value={item.basicSalaries + item.bonusSalaries + item.projectSalaries
+                                                + item.onsiteSalaries + item.overtimeSalaries - item.deductionSalaries}
+                                                displayType={'text'}
+                                                thousandSeparator=","
+                                                suffix="VND"
+                                            /></td>
 
                                             {/* <td>
                                                 <button className='btn-edit'

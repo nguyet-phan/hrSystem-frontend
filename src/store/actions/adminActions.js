@@ -251,6 +251,7 @@ export const saveBasicSalaries = (data) => {
     return async (dispatch, getState) => {
         try {
             let res = await saveBasicSalaryService(data);
+            // console.log('check saveBasicSalaryService: ', res);
             if (res && res.errCode === 0) {
                 toast.success("Lưu bảng lương thành công!/ Save the payroll succeed!");
                 dispatch({
@@ -258,13 +259,13 @@ export const saveBasicSalaries = (data) => {
                 });
             } else {
                 console.log('SAVE_BASIC_SALARY_FAILDED error: ', res);
-                toast.error("Thiếu thông tin nhân viên/ tháng/ lương cơ bản!/ Missing information: employee/month/base salary");
+                toast.error("Thiếu thông tin nhân viên/ tháng/ lương cơ bản!/ Missing information: employee/month/base salary!");
                 dispatch({
                     type: actionTypes.SAVE_BASIC_SALARY_FAILDED
                 });
             }
         } catch (e) {
-            toast.error("Thiếu thông tin nhân viên/ tháng/ lương cơ bản!/ Missing information: employee/month/base salary");
+            toast.error("Lưu bảng lương không thành công!/ Save the payroll failed!");
             dispatch({
                 type: actionTypes.SAVE_BASIC_SALARY_FAILDED
             });

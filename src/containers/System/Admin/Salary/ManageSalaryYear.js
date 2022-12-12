@@ -6,6 +6,7 @@ import * as actions from "../../../../store/actions";
 import { LANGUAGES } from '../../../../utils';
 import Select from 'react-select';
 import moment from 'moment';
+import NumberFormat from 'react-number-format';
 import { getAllSalaryByMonthService }
     from '../../../../services/userService';
 
@@ -121,13 +122,21 @@ class ManageSalaryYear extends Component {
                                     </tr>
                                 </thead>
                                 <tbody>
+
                                     {listMonth && listMonth.length > 0
                                         && listMonth.map((item) => {
                                             return (
                                                 <tr key={item.month}>
                                                     <td>{this.state.selectedYear.value}</td>
                                                     <td>{item.month}</td>
-                                                    <td>{item.totalSalary}</td>
+                                                    <td>
+                                                        <NumberFormat value={item.totalSalary}
+                                                            displayType={'text'}
+                                                            thousandSeparator=","
+                                                            suffix="VND"
+                                                        />
+
+                                                    </td>
                                                     {/* <td>
                                                         <button className='btn-edit'
                                                             onClick={() => this.handleDetailMonth(item)}

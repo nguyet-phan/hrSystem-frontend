@@ -39,7 +39,7 @@ class Header extends Component {
     }
 
     render() {
-        console.log('check header props: ', this.props);
+        // console.log('check header props: ', this.props);
 
         const { processLogout, language, userInfo } = this.props;
 
